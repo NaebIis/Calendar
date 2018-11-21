@@ -4,6 +4,7 @@ import dateFns from "date-fns";
 import Event from "./event";
 import { addEventForm } from "../actions/addEventForm";
 import { postEvent } from "../actions/postEvent";
+// import { updateState } from "../actions/updateState";
 const mapStateToProps = state => {
   return {
     events: state.events,
@@ -15,6 +16,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onAddEvent: () => dispatch(addEventForm()),
     postEvent: obj => dispatch(postEvent(obj))
+    // updateState: obj => dispatch(updateState(obj))
   };
 };
 
@@ -155,8 +157,8 @@ class Calendar extends React.Component {
       address: form.address.value,
       date: form.date.value
     };
-    debugger;
     this.props.postEvent(obj);
+    // this.props.updateState(obj);
   };
 
   render() {

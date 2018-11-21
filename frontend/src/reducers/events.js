@@ -3,7 +3,7 @@ const INIT_STATE = {
   fetched: false,
   error: null,
   events: [],
-  addEventForm: false
+  addEventForm: true
 };
 
 const Events = (state = INIT_STATE, action) => {
@@ -31,6 +31,9 @@ const Events = (state = INIT_STATE, action) => {
     }
     case "ADD_EVENT_FORM": {
       return { ...state, addEventForm: !state.addEventForm };
+    }
+    case "UPDATE_STATE": {
+      return { ...state, events: [...state.events, action.payload] };
     }
     default:
       return state;

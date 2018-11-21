@@ -10,11 +10,10 @@ export function postEvent(obj) {
     })
       .then(resp => resp.json())
       .then(resp => {
+        debugger;
         dispatch({
-          type: "POST_EVENT",
-          payload: {
-            resp
-          }
+          type: "UPDATE_STATE",
+          payload: resp
         });
       });
   };

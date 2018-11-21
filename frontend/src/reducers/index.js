@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 
-import Events from "./events";
-import CurrentEvent from "./CurrentEvent";
+import events from "./events";
+// import updateState from "./updateState";
 
 // const INIT_STATE = {
 //   fetching: false,
@@ -12,7 +12,8 @@ import CurrentEvent from "./CurrentEvent";
 // };
 
 const rootReducer = combineReducers({
-  events: Events
+  events: events
+  // updateState: updateState
 });
 // const rootReducer = combineReducers({
 //   fetching: Fetching,
