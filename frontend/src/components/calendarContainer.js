@@ -6,10 +6,8 @@ import { addEventForm } from "../actions/addEventForm";
 import { postEvent } from "../actions/postEvent";
 const mapStateToProps = state => {
   return {
-    init: state.events,
-    addEvent: state.addEventForm.addEventForm,
-    onPostEvent: state.init_state.postEvent,
-    addMoreEvents: state.postEvent
+    events: state.events,
+    addEvent: state.events.addEventForm
   };
 };
 
@@ -112,7 +110,7 @@ class Calendar extends React.Component {
             <div className="con">
               <br />
               <br />
-              {this.props.init.map(event => {
+              {this.props.events.events.map(event => {
                 return <Event day={day} key={event.id} event={event} />;
               })}
             </div>
