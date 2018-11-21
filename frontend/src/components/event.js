@@ -1,8 +1,6 @@
 import React from "react";
 
 class Event extends React.Component {
-  newEvent = () => {};
-
   renderEvent = () => {
     if (
       new Date(this.props.event.date).getTime() === this.props.day.getTime()

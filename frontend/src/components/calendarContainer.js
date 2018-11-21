@@ -9,7 +9,8 @@ const mapStateToProps = state => {
   return {
     init: state.init_state.events,
     addEvent: state.addEventForm.addEventForm,
-    onPostEvent: state.init_state.postEvent
+    onPostEvent: state.init_state.postEvent,
+    addMoreEvents: state.postEvent
   };
 };
 
@@ -20,8 +21,20 @@ const mapDispatchToProps = {
 
 class Calendar extends React.Component {
   state = {
+    clickedDay: "",
     currentMonth: new Date(),
     selectedDate: new Date()
+  };
+
+  clickedDay = event => {
+    let day = event.target.parentElement.children[0].id;
+    // debugger;
+    this.setState(
+      {
+        clickedDay: day
+      },
+      () => console.log(this.state.clickedDay)
+    );
   };
 
   renderHeader() {
@@ -89,10 +102,12 @@ class Calendar extends React.Component {
                 : ""
             }`}
             key={day}
-            onClick={() =>
-              this.onDateClick(dateFns.parse(cloneDay), this.props.onAddEvent())
-            }
+            onClick={event => {
+              this.onDateClick(dateFns.parse(cloneDay));
+              this.clickedDay(event);
+            }}
           >
+            <span id={day} className="day" />
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
             <div className="con">
@@ -117,9 +132,12 @@ class Calendar extends React.Component {
   }
 
   onDateClick = day => {
-    this.setState({
-      selectedDate: day
-    });
+    this.setState(
+      {
+        selectedDate: day
+      },
+      () => this.props.onAddEvent()
+    );
   };
 
   nextMonth = () => {
@@ -134,13 +152,13 @@ class Calendar extends React.Component {
     });
   };
 
-  onSubmitHandler = (event, day) => {
+  onSubmitHandler = event => {
     let temp = event.target.parentElement.children[0];
     let obj = {
       name: temp.children[0].value,
       time: temp.children[2].value,
       address: temp.children[4].value,
-      date: day
+      date: temp.children[5].value
     };
     this.props.postEvent(obj);
   };
@@ -155,7 +173,7 @@ class Calendar extends React.Component {
         </div>
         <div className="addEvent-form">
           {this.props.addEvent ? (
-            <form onClick={this.onSubmitHandler}>
+            <form>
               <label>
                 Title:
                 <input type="text" name="title" />
@@ -165,8 +183,18 @@ class Calendar extends React.Component {
                 <br />
                 Address:
                 <input type="text" name="address" />
+                <input
+                  type="text"
+                  name="data"
+                  defaultValue={this.state.clickedDay}
+                  hidden
+                />
               </label>
-              <input type="button" value="Submit" />
+              <input
+                type="button"
+                value="Submit"
+                onClick={this.onSubmitHandler}
+              />
             </form>
           ) : null}
         </div>

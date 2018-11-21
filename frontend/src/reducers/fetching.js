@@ -1,8 +1,8 @@
 const INIT_STATE = {
   fetching: false,
   fetched: false,
-  events: [],
   error: null,
+  events: [],
   addEventForm: false
 };
 

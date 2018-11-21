@@ -3,6 +3,7 @@ import Sidebar from "./components/sidebar";
 import { BrowserRouter as Router } from "react-router-dom";
 import { applyMiddleware, compose, createStore } from "redux";
 import { Provider } from "react-redux";
+import thunk from "redux-thunk";
 import { createLogger } from "redux-logger";
 import promise from "redux-promise-middleware";
 import Main from "./components/main";
@@ -51,7 +52,7 @@ const makeStore = () => {
     // reducer,
     rootReducer,
     compose(
-      applyMiddleware(promise(), createLogger()),
+      applyMiddleware(promise(), thunk, createLogger()),
       window.devToolsExtension ? window.devToolsExtension() : f => f
     )
   );

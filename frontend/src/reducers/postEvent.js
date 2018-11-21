@@ -1,8 +1,7 @@
 const PostEvent = function(state = {}, action) {
   switch (action.type) {
     case "POST_EVENT": {
-      console.log("working");
-      return state;
+      return { ...state, PostEvent: [state.events, action.payload] };
     }
     default:
       return state;

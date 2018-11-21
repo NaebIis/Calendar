@@ -1,11 +1,21 @@
-export function postEvent() {
-  return {
-    type: "POST_EVENT"
-    // payload: {
-    //   name: obj.name,
-    //   address: obj.address,
-    //   time: obj.time,
-    //   date: obj.date
-    // }
+export function postEvent(obj) {
+  return dispatch => {
+    fetch("http://localhost:3000/events", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(obj)
+    })
+      .then(resp => resp.json())
+      .then(resp => {
+        dispatch({
+          type: "POST_EVENT",
+          payload: {
+            resp
+          }
+        });
+      });
   };
 }
