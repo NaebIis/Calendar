@@ -6,7 +6,7 @@ const INIT_STATE = {
   addEventForm: false
 };
 
-const Fetching = (state = INIT_STATE, action) => {
+const Events = (state = INIT_STATE, action) => {
   switch (action.type) {
     case "EVENTS_PENDING": {
       return {
@@ -34,4 +34,4 @@ const Fetching = (state = INIT_STATE, action) => {
   }
 };
 
-export default Fetching;
+export default Events;

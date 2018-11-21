@@ -1,8 +1,7 @@
 import { combineReducers } from "redux";
 
-import Fetching from "./fetching";
-import AddEventForm from "./addEventForm";
-import postEvent from "./postEvent";
+import Events from "./events";
+import CurrentEvent from "./CurrentEvent";
 
 // const INIT_STATE = {
 //   fetching: false,
@@ -13,9 +12,7 @@ import postEvent from "./postEvent";
 // };
 
 const rootReducer = combineReducers({
-  init_state: Fetching,
-  addEventForm: AddEventForm,
-  postEvent: postEvent
+  events: Events
 });
 // const rootReducer = combineReducers({
 //   fetching: Fetching,

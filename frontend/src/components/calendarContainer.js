@@ -4,10 +4,9 @@ import dateFns from "date-fns";
 import Event from "./event";
 import { addEventForm } from "../actions/addEventForm";
 import { postEvent } from "../actions/postEvent";
-
 const mapStateToProps = state => {
   return {
-    init: state.init_state.events,
+    init: state.events,
     addEvent: state.addEventForm.addEventForm,
     onPostEvent: state.init_state.postEvent,
     addMoreEvents: state.postEvent
