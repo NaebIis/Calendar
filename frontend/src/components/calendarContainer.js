@@ -14,7 +14,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onAddEvent: () => dispatch(addEventForm()),
-    postEvent: () => dispatch(postEvent())
+    postEvent: obj => dispatch(postEvent(obj))
   };
 };
 
@@ -27,13 +27,9 @@ class Calendar extends React.Component {
 
   clickedDay = event => {
     let day = event.target.parentElement.children[0].id;
-    // debugger;
-    this.setState(
-      {
-        clickedDay: day
-      },
-      () => console.log(this.state.clickedDay)
-    );
+    this.setState({
+      clickedDay: day
+    });
   };
 
   renderHeader() {
@@ -152,13 +148,14 @@ class Calendar extends React.Component {
   };
 
   onSubmitHandler = event => {
-    let temp = event.target.parentElement.children[0];
+    let form = event.target.parentElement;
     let obj = {
-      name: temp.children[0].value,
-      time: temp.children[2].value,
-      address: temp.children[4].value,
-      date: temp.children[5].value
+      name: form.name.value,
+      time: form.time.value,
+      address: form.address.value,
+      date: form.date.value
     };
+    debugger;
     this.props.postEvent(obj);
   };
 
@@ -173,22 +170,20 @@ class Calendar extends React.Component {
         <div className="addEvent-form">
           {this.props.addEvent ? (
             <form>
-              <label>
-                Title:
-                <input type="text" name="title" />
-                <br />
-                Time:
-                <input type="text" name="Time" />
-                <br />
-                Address:
-                <input type="text" name="address" />
-                <input
-                  type="text"
-                  name="data"
-                  defaultValue={this.state.clickedDay}
-                  hidden
-                />
-              </label>
+              <label>Name:</label>
+              <input type="text" name="name" />
+              <br />
+              <label>Time:</label>
+              <input type="text" name="time" />
+              <br />
+              <label>Address:</label>
+              <input type="text" name="address" />
+              <input
+                type="text"
+                name="date"
+                defaultValue={this.state.clickedDay}
+                hidden
+              />
               <input
                 type="button"
                 value="Submit"
