@@ -29,6 +29,9 @@ const Events = (state = INIT_STATE, action) => {
         error: action.payload
       };
     }
+    case "ADD_EVENT_FORM": {
+      return { ...state, addEventForm: !state.addEventForm };
+    }
     default:
       return state;
   }

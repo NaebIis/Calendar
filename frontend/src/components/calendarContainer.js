@@ -11,9 +11,11 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = {
-  onAddEvent: addEventForm,
-  postEvent: postEvent
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddEvent: () => dispatch(addEventForm()),
+    postEvent: () => dispatch(postEvent())
+  };
 };
 
 class Calendar extends React.Component {
