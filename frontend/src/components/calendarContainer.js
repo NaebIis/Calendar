@@ -4,7 +4,7 @@ import dateFns from "date-fns";
 import Event from "./event";
 import { addEventForm } from "../actions/addEventForm";
 import { postEvent } from "../actions/postEvent";
-// import { updateState } from "../actions/updateState";
+import EventSidebar from "./eventSidebar";
 const mapStateToProps = state => {
   return {
     events: state.events,
@@ -16,7 +16,6 @@ const mapDispatchToProps = dispatch => {
   return {
     onAddEvent: () => dispatch(addEventForm()),
     postEvent: obj => dispatch(postEvent(obj))
-    // updateState: obj => dispatch(updateState(obj))
   };
 };
 
@@ -155,13 +154,14 @@ class Calendar extends React.Component {
       name: form.name.value,
       time: form.time.value,
       address: form.address.value,
-      date: form.date.value
+      date: form.date.value,
+      notes: form.notes.value
     };
     form.name.value = "";
     form.time.value = "";
     form.address.value = "";
+    form.notes.value = "";
     this.props.postEvent(obj);
-    // this.props.updateState(obj);
   };
 
   render() {
@@ -190,13 +190,22 @@ class Calendar extends React.Component {
                   defaultValue={this.state.clickedDay}
                   hidden
                 />
+                <br />
+                <input type="text" name="notes" />
                 <input
                   type="button"
                   value="Submit"
                   onClick={this.onSubmitHandler}
                 />
               </form>
-              <div className="notePad" />
+              <div className="today">
+                {this.props.events.events.map(event => {
+                  debugger;
+                  if (event.date == this.state.clickedDay) {
+                    return <EventSidebar key={event.id} event={event} />;
+                  }
+                })}
+              </div>
             </div>
           ) : (
             <button className="addEvent-btn" onClick={this.props.onAddEvent}>

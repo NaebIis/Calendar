@@ -32,9 +32,12 @@ const Events = (state = INIT_STATE, action) => {
     case "ADD_EVENT_FORM": {
       return { ...state, addEventForm: !state.addEventForm };
     }
-    case "UPDATE_STATE": {
+    case "POST_EVENT": {
       return { ...state, events: [...state.events, action.payload] };
     }
+    // case "UPDATE_NOTES": {
+    //   return { ...state, events: [...state.events.notes, action.payload] };
+    // }
     default:
       return state;
   }

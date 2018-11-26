@@ -33,7 +33,7 @@
 
 /* FONT IMPORTS */
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300, 400, 700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
 .icon {
@@ -379,6 +379,27 @@ h5 {
   position: absolute;
   left: 250px;
   bottom: -600px;
+  font-weight: bold;
+  padding: 5px;
+  border: 3px solid white; 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    padding: 15px;
+    background: rgba(255,255,255,0.5);
+    margin: 0 0 10px 0;
+}
+
+.today {
+  position: absolute;
+  left: 0px;
+  top: 150px;
   font-weight: bold;
   padding: 5px;
   border: 3px solid white; 

@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2018_11_16_161910) do
     t.string "time"
     t.string "address"
     t.string "date"
+    t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
