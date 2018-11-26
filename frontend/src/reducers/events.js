@@ -3,7 +3,7 @@ const INIT_STATE = {
   fetched: false,
   error: null,
   events: [],
-  addEventForm: true
+  addEventForm: false
 };
 
 const Events = (state = INIT_STATE, action) => {

@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Home from "./home";
 import Calendar from "./calendarContainer";
+import NotePad from "./notePad";
 
 const Main = () => (
   <main>
@@ -13,6 +14,7 @@ const Main = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/calendar" component={Calendar} />
+      <Route exact path="/notePad" component={NotePad} />
     </Switch>
   </main>
 );

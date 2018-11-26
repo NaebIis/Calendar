@@ -22,6 +22,9 @@ class Sidebar extends React.Component {
             <li>
               <Link to="/calendar">Calendar</Link>
             </li>
+            <li>
+              <Link to="/notePad">NotePad</Link>
+            </li>
           </ul>
         </nav>
       </div>

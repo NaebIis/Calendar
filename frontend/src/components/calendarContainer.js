@@ -157,6 +157,9 @@ class Calendar extends React.Component {
       address: form.address.value,
       date: form.date.value
     };
+    form.name.value = "";
+    form.time.value = "";
+    form.address.value = "";
     this.props.postEvent(obj);
     // this.props.updateState(obj);
   };
@@ -171,28 +174,35 @@ class Calendar extends React.Component {
         </div>
         <div className="addEvent-form">
           {this.props.addEvent ? (
-            <form>
-              <label>Name:</label>
-              <input type="text" name="name" />
-              <br />
-              <label>Time:</label>
-              <input type="text" name="time" />
-              <br />
-              <label>Address:</label>
-              <input type="text" name="address" />
-              <input
-                type="text"
-                name="date"
-                defaultValue={this.state.clickedDay}
-                hidden
-              />
-              <input
-                type="button"
-                value="Submit"
-                onClick={this.onSubmitHandler}
-              />
-            </form>
-          ) : null}
+            <div>
+              <form>
+                <label>Name:</label>
+                <input type="text" name="name" />
+                <br />
+                <label>Time:</label>
+                <input type="text" name="time" />
+                <br />
+                <label>Address:</label>
+                <input type="text" name="address" />
+                <input
+                  type="text"
+                  name="date"
+                  defaultValue={this.state.clickedDay}
+                  hidden
+                />
+                <input
+                  type="button"
+                  value="Submit"
+                  onClick={this.onSubmitHandler}
+                />
+              </form>
+              <div className="notePad" />
+            </div>
+          ) : (
+            <button className="addEvent-btn" onClick={this.props.onAddEvent}>
+              Add Event
+            </button>
+          )}
         </div>
       </div>
     );

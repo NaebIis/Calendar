@@ -19,7 +19,7 @@ class Home extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    init: state.init_state.events
+    init: state.events
   };
 };
 
