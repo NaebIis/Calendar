@@ -7,9 +7,9 @@ import NotePad from "./notePad";
 const Main = () => (
   <main>
     <header className="mainHeader">
-      <a href="" className="Login-btn">
+      {/* <a href="" className="Login-btn">
         Login
-      </a>
+      </a> */}
     </header>
     <Switch>
       <Route exact path="/" component={Home} />

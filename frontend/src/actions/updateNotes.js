@@ -1,4 +1,7 @@
-export function updateNotes(obj, id) {
+export function updateNotes(event, id) {
+  let temp = {
+    notes: event.target.value
+  };
   return dispatch => {
     fetch(`http://localhost:3000/events/${id}`, {
       method: "PATCH",
@@ -6,7 +9,7 @@ export function updateNotes(obj, id) {
         "Content-Type": "application/json",
         Accept: "application/json"
       },
-      body: JSON.stringify(obj)
+      body: JSON.stringify(temp)
     })
       .then(resp => resp.json())
       .then(resp => {

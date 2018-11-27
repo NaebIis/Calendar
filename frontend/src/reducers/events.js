@@ -35,9 +35,24 @@ const Events = (state = INIT_STATE, action) => {
     case "POST_EVENT": {
       return { ...state, events: [...state.events, action.payload] };
     }
-    // case "UPDATE_NOTES": {
-    //   return { ...state, events: [...state.events.notes, action.payload] };
-    // }
+    case "UPDATE_NOTES": {
+      const temp = [];
+      state.events.map(thing => {
+        if (thing.id === action.payload.id) {
+          thing.notes = action.payload.notes;
+          temp.push(thing);
+        } else {
+          temp.push(thing);
+        }
+      });
+      return { ...state, events: temp };
+    }
+    case "DELETE_EVENT": {
+      const temp = state.events.filter(thing => {
+        return thing.id !== action.payload;
+      });
+      return { ...state, events: temp };
+    }
     default:
       return state;
   }

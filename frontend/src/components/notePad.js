@@ -2,12 +2,28 @@ import React from "react";
 import { connect } from "react-redux";
 
 class NotePad extends React.Component {
+  state = {
+    clickedDaysNotes: ""
+  };
+
+  componentWillMount() {
+    let temp = "";
+    this.props.events.events.map(event => {
+      return temp + " " + event.notes;
+    });
+    this.setState({
+      clickedDaysNotes: temp
+    });
+  }
+
   render() {
     return (
       <div className="notePad">
-        <textarea rows="40" cols="45">
-          yAAAAAAAAAAs
-        </textarea>
+        <textarea
+          rows="40"
+          cols="45"
+          defaultValue={this.state.clickedDaysNotes}
+        />
       </div>
     );
   }
@@ -15,7 +31,7 @@ class NotePad extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    init: state.events
+    events: state.events
   };
 };
 

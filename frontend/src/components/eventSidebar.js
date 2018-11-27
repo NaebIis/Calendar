@@ -1,20 +1,47 @@
 import React from "react";
+import { connect } from "react-redux";
+import { updateNotes } from "../actions/updateNotes";
+import { deleteEvent } from "../actions/deleteEvent";
+
+const mapDispatchToProps = dispatch => {
+  //   debugger;
+  return {
+    updateNotes: (obj, id) => dispatch(updateNotes(obj, id)),
+    deleteEvent: id => dispatch(deleteEvent(id))
+  };
+};
+
+const mapStateToProps = state => {
+  return {
+    events: state.events,
+    addEvent: state.events.addEventForm
+  };
+};
 
 class EventSidebar extends React.Component {
   renderEvent = () => {
     return (
       <div>
         <h4>
-          {this.props.event.name} {this.props.event.time} <button>save</button>
+          {this.props.event.name} {this.props.event.time}{" "}
+          <button onClick={() => this.props.deleteEvent(this.props.event.id)}>
+            Delete event
+          </button>
         </h4>
-        <textarea value={this.props.event.notes} />
+        <input
+          defaultValue={this.props.event.notes}
+          onChange={event => this.props.updateNotes(event, this.props.event.id)}
+        />
       </div>
     );
   };
 
   render() {
-    return <div onClick={this.newEvent}>{this.renderEvent()}</div>;
+    return <div>{this.renderEvent()}</div>;
   }
 }
 
-export default EventSidebar;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EventSidebar);

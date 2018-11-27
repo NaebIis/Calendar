@@ -5,6 +5,7 @@ import Event from "./event";
 import { addEventForm } from "../actions/addEventForm";
 import { postEvent } from "../actions/postEvent";
 import EventSidebar from "./eventSidebar";
+
 const mapStateToProps = state => {
   return {
     events: state.events,
@@ -200,8 +201,7 @@ class Calendar extends React.Component {
               </form>
               <div className="today">
                 {this.props.events.events.map(event => {
-                  debugger;
-                  if (event.date == this.state.clickedDay) {
+                  if (event.date === this.state.clickedDay) {
                     return <EventSidebar key={event.id} event={event} />;
                   }
                 })}
