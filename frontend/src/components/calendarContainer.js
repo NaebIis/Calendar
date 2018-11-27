@@ -4,34 +4,34 @@ import dateFns from "date-fns";
 import Event from "./event";
 import { addEventForm } from "../actions/addEventForm";
 import { postEvent } from "../actions/postEvent";
+import { clickedDay } from "../actions/clickedDay";
 import EventSidebar from "./eventSidebar";
 
 const mapStateToProps = state => {
   return {
     events: state.events,
-    addEvent: state.events.addEventForm
+    addEvent: state.events.addEventForm,
+    clickedDay: state.events.clickedDay
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onAddEvent: () => dispatch(addEventForm()),
-    postEvent: obj => dispatch(postEvent(obj))
+    postEvent: obj => dispatch(postEvent(obj)),
+    onClickedDay: day => dispatch(clickedDay(day))
   };
 };
 
 class Calendar extends React.Component {
   state = {
-    clickedDay: "",
     currentMonth: new Date(),
     selectedDate: new Date()
   };
 
   clickedDay = event => {
     let day = event.target.parentElement.children[0].id;
-    this.setState({
-      clickedDay: day
-    });
+    this.props.onClickedDay(day);
   };
 
   renderHeader() {
@@ -188,7 +188,7 @@ class Calendar extends React.Component {
                 <input
                   type="text"
                   name="date"
-                  defaultValue={this.state.clickedDay}
+                  defaultValue={this.props.clickedDay}
                   hidden
                 />
                 <br />
@@ -201,7 +201,7 @@ class Calendar extends React.Component {
               </form>
               <div className="today">
                 {this.props.events.events.map(event => {
-                  if (event.date === this.state.clickedDay) {
+                  if (event.date === `${this.props.clickedDay}`) {
                     return <EventSidebar key={event.id} event={event} />;
                   }
                 })}
