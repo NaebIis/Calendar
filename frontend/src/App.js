@@ -29,6 +29,11 @@ store.dispatch({
   type: "EVENTS",
   payload: fetch(`${URL}/events`).then(resp => resp.json())
 });
+
+store.dispatch({
+  type: "CLICKED_DAY_NOTES",
+  payload: fetch(`${URL}/clicked_day_notes`).then(resp => resp.json())
+});
 // store.dispatch(dispatch => {
 //   dispatch({ type: "FETCHING_EVENTS" })
 //   fetch(`${URL}/events`).then(resp => resp.json())

@@ -4,7 +4,7 @@ const INIT_STATE = {
   error: null,
   events: [],
   addEventForm: false,
-  clickedDay: ""
+  clickedDay: "Tue Nov 20 2018 00:00:00 GMT-0600 (Central Standard Time)"
 };
 
 const Events = (state = INIT_STATE, action) => {
