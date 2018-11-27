@@ -1,10 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { updateNotes } from "../actions/updateNotes";
-import { deleteEvent } from "../actions/deleteEvent";
+import { updateNotes } from "../actions/events/updateNotes";
+import { deleteEvent } from "../actions/events/deleteEvent";
 
 const mapDispatchToProps = dispatch => {
-  //   debugger;
   return {
     updateNotes: (obj, id) => dispatch(updateNotes(obj, id)),
     deleteEvent: id => dispatch(deleteEvent(id))

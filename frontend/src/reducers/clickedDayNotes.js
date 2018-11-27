@@ -29,6 +29,18 @@ const ClickedDayNotes = (state = INIT_STATE, action) => {
         error: action.payload
       };
     }
+    case "UPDATE_NOTES": {
+      const temp = [];
+      state.notes.map(thing => {
+        if (thing.id === action.payload.id) {
+          thing.notes = action.payload.notes;
+          temp.push(thing);
+        } else {
+          temp.push(thing);
+        }
+      });
+      return { ...state, notes: temp };
+    }
     default:
       return state;
   }
