@@ -3,7 +3,8 @@ const INIT_STATE = {
   fetched: false,
   error: null,
   events: [],
-  addEventForm: false
+  addEventForm: false,
+  clickedDay: ""
 };
 
 const Events = (state = INIT_STATE, action) => {
@@ -52,6 +53,9 @@ const Events = (state = INIT_STATE, action) => {
         return thing.id !== action.payload;
       });
       return { ...state, events: temp };
+    }
+    case "UPDATE_CLICKED_DAY": {
+      return { ...state, clickedDay: action.payload };
     }
     default:
       return state;

@@ -14,7 +14,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     events: state.events,
-    addEvent: state.events.addEventForm
+    addEvent: state.events.addEventForm,
+    clickedDay: state.events.clickedDay
   };
 };
 

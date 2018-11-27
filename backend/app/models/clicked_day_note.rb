@@ -1,0 +1,2 @@
+class ClickedDayNote < ApplicationRecord
+end
