@@ -41,6 +41,9 @@ const ClickedDayNotes = (state = INIT_STATE, action) => {
       });
       return { ...state, notes: temp };
     }
+    case "POST_CLICKED_DAY_NOTES": {
+      return { ...state, notes: [...state.notes, action.payload] };
+    }
     default:
       return state;
   }

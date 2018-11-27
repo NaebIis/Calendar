@@ -2,10 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import EventSidebar from "./eventSidebar";
 import { editNotes } from "../actions/clickedDayNotes/editNote.js";
+import { postClickedDayNote } from "../actions/clickedDayNotes/postClickedDayNote";
 
 const mapDispatchToProps = dispatch => {
   return {
-    editClickedDayNotes: (event, id) => dispatch(editNotes(event, id))
+    editClickedDayNotes: (event, id) => dispatch(editNotes(event, id)),
+    postClickedDayNote: day => dispatch(postClickedDayNote(day))
   };
 };
 
@@ -19,52 +21,43 @@ const mapStateToProps = state => {
 
 class NotePad extends React.Component {
   state = {
-    // clickedDaysNotes: ""
+    clickedDaysNotes: ""
   };
   componentWillMount() {
-    let temp = [];
+    let tempNotesString = [];
     let id = undefined;
     // this.props.events.events.map(event => {
     //   if (event.date === this.props.clickedDay) {
-    //     temp.push(event.notes + " ");
+    //     tempNotesString.push(event.notes + " ");
     //   }
     // });
 
-    // let question = this.props.notes.filter(note => {
-    //   return note.day === `${this.props.clickedDay}`;
-    // });
-    // if (question.length >= 1) {
-    //   console.log("true");
-    //   temp.push(question[0].notes);
-    //   id = question[0].id;
-    // this.setState(
-    //   {
-    //     clickedDaysNotes: temp,
-    //     clickedDaysId: id
-    //   },
-    //   () => console.log(this.state.editClickedDayNotes),
-    //   console.log(this.state.editClickedDayId)
-    // );
-    // } else if (question.length === 0) {
-    //   console.log("false");
-    //   this.setState({
-    //     clickedDaysNotes: "temp",
-    //     clickedDaysId: 1
-    //   });
-    // }
+    let clickedDayNote = this.props.notes.find(note => {
+      return note.day === `${this.props.clickedDay}`;
+    });
+    if (clickedDayNote) {
+      tempNotesString.push(clickedDayNote.notes);
+      id = clickedDayNote.id;
+      this.setState({
+        clickedDaysNotes: tempNotesString,
+        clickedDaysId: id
+      });
+    } else if (!clickedDayNote) {
+      this.props.postClickedDayNote(this.props.clickedDay);
+      // this.componentWillMount();
+    }
 
-    this.props.notes.map(note => {
-      debugger;
-      if (note.day === this.props.clickedDay) {
-        temp.push(note.notes);
-        id = note.id;
-      }
-      console.log(temp);
-    });
-    this.setState({
-      clickedDaysNotes: temp,
-      clickedDaysId: id
-    });
+    //   this.props.notes.map(note => {
+    //     if (note.day === this.props.clickedDay) {
+    //       tempNotesString.push(note.notes);
+    //       id = note.id;
+    //     }
+    //     console.log(tempNotesString);
+    //   });
+    //   this.setState({
+    //     clickedDaysNotes: tempNotesString,
+    //     clickedDaysId: id
+    //   });
   }
 
   render() {
