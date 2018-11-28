@@ -3,11 +3,12 @@ import { connect } from "react-redux";
 import EventSidebar from "./eventSidebar";
 import { editNotes } from "../actions/clickedDayNotes/editNote.js";
 import { postClickedDayNote } from "../actions/clickedDayNotes/postClickedDayNote";
-
+import { getClickedDayNotes } from "../fetching/fetching";
 const mapDispatchToProps = dispatch => {
   return {
     editClickedDayNotes: (event, id) => dispatch(editNotes(event, id)),
     postClickedDayNote: day => dispatch(postClickedDayNote(day))
+    // getClickedDayNotes: () => dispatch(getClickedDayNotes())
   };
 };
 
@@ -45,19 +46,8 @@ class NotePad extends React.Component {
     } else if (!clickedDayNote) {
       this.props.postClickedDayNote(this.props.clickedDay);
       // this.componentWillMount();
+      // this.props.clickedDayNotes();
     }
-
-    //   this.props.notes.map(note => {
-    //     if (note.day === this.props.clickedDay) {
-    //       tempNotesString.push(note.notes);
-    //       id = note.id;
-    //     }
-    //     console.log(tempNotesString);
-    //   });
-    //   this.setState({
-    //     clickedDaysNotes: tempNotesString,
-    //     clickedDaysId: id
-    //   });
   }
 
   render() {

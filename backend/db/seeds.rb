@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Event.destroy_all
+ClickedDayNote.destroy_all
 one = Event.create(name: "Pick flowers", time: "13:30 AM", address: "1910 Winter st", date: "Tue Nov 20 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "red, blue, green")
 Event.create(name: "cooking", time: "11:30 AM", address: "1910 Winter st", date: "Tue Nov 20 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "gumbo")
 Event.create(name: "setting up", time: "12:30 AM", address: "1910 Winter st", date: "Tue Nov 20 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "wedding")
