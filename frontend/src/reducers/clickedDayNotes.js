@@ -2,8 +2,7 @@ const INIT_STATE = {
   fetching: false,
   fetched: false,
   error: null,
-  notes: [],
-  clickedDay: "Tue Nov 20 2018 00:00:00 GMT-0600 (Central Standard Time)"
+  notes: []
 };
 
 const ClickedDayNotes = (state = INIT_STATE, action) => {
@@ -15,6 +14,7 @@ const ClickedDayNotes = (state = INIT_STATE, action) => {
       };
     }
     case "CLICKED_DAY_NOTES_FULFILLED": {
+      console.log(action.payload);
       return {
         ...state,
         fetching: false,

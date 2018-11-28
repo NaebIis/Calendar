@@ -4,7 +4,7 @@ const INIT_STATE = {
   error: null,
   events: [],
   addEventForm: false,
-  clickedDay: "Tue Nov 20 2018 00:00:00 GMT-0600 (Central Standard Time)"
+  clickedDay: ""
 };
 
 const Events = (state = INIT_STATE, action) => {
@@ -31,7 +31,7 @@ const Events = (state = INIT_STATE, action) => {
       };
     }
     case "ADD_EVENT_FORM": {
-      return { ...state, addEventForm: !state.addEventForm };
+      return { ...state, addEventForm: true };
     }
     case "POST_EVENT": {
       return { ...state, events: [...state.events, action.payload] };
