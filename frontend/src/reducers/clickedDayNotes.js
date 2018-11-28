@@ -14,7 +14,6 @@ const ClickedDayNotes = (state = INIT_STATE, action) => {
       };
     }
     case "CLICKED_DAY_NOTES_FULFILLED": {
-      console.log(action.payload);
       return {
         ...state,
         fetching: false,

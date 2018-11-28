@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import EventSidebar from "./eventSidebar";
+import NotePadDateList from "./notePadDateList";
 import { editNotes } from "../actions/clickedDayNotes/editNote.js";
 import { postClickedDayNote } from "../actions/clickedDayNotes/postClickedDayNote";
 import { getClickedDayNotes } from "../fetching/fetching";
@@ -60,12 +61,16 @@ class NotePad extends React.Component {
               clickedDaysId: id
             });
           }
-        }, 1000);
+        }, 500);
       }
     }
   }
 
   render() {
+    let temp = this.props.notes.sort(function(a, b) {
+      return new Date(b.day) - new Date(a.day);
+    });
+    // this.props.notes
     return (
       <div>
         <h2>{this.props.clickedDay.slice(0, 11)}</h2>
@@ -85,6 +90,21 @@ class NotePad extends React.Component {
               return <EventSidebar key={event.id} event={event} />;
             }
           })}
+        </div>
+        <div className="NotePadDateList">
+          <nav>
+            <ul>
+              {temp.reverse().map(note => {
+                return (
+                  <NotePadDateList
+                    date={new Date()}
+                    key={note.id}
+                    note={note}
+                  />
+                );
+              })}
+            </ul>
+          </nav>
         </div>
       </div>
     );

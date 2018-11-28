@@ -73,7 +73,6 @@ class Calendar extends React.Component {
 
   renderCells() {
     const { currentMonth, selectedDate } = this.state;
-    // const { currentMonth, selectedDate } = this.state;
     const monthStart = dateFns.startOfMonth(currentMonth);
     const monthEnd = dateFns.endOfMonth(monthStart);
     const startDate = dateFns.startOfWeek(monthStart);

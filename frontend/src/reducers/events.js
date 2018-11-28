@@ -4,7 +4,7 @@ const INIT_STATE = {
   error: null,
   events: [],
   addEventForm: false,
-  clickedDay: ""
+  clickedDay: `${new Date()}`
 };
 
 const Events = (state = INIT_STATE, action) => {
