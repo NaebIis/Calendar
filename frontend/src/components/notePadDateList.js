@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { clickedDay } from "../actions/events/clickedDay";
 
 const mapStateToProps = state => {
   return {
@@ -8,10 +9,16 @@ const mapStateToProps = state => {
     clickedDay: state.events.clickedDay
   };
 };
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onClickedDay: day => dispatch(clickedDay(day))
+  };
+};
 // {this.props.date.getMonth()}
 class NotePadDateList extends React.Component {
   renderEvent = () => {
-    return <li>{this.props.note.day.slice(0, 11)}</li>;
+    return <li className="dateListItem">{this.props.note.day.slice(0, 11)}</li>;
   };
 
   render() {
@@ -19,4 +26,7 @@ class NotePadDateList extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(NotePadDateList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NotePadDateList);

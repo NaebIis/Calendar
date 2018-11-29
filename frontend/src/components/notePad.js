@@ -70,7 +70,7 @@ class NotePad extends React.Component {
     let temp = this.props.notes.sort(function(a, b) {
       return new Date(b.day) - new Date(a.day);
     });
-    // this.props.notes
+    // this.props.notes;
     return (
       <div>
         <h2>{this.props.clickedDay.slice(0, 11)}</h2>

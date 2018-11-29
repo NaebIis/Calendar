@@ -29,11 +29,6 @@ class Calendar extends React.Component {
     selectedDate: new Date()
   };
 
-  clickedDay = event => {
-    let day = event.target.parentElement.children[0].id;
-    this.props.onClickedDay(day);
-  };
-
   renderHeader() {
     const dateFormat = "MMMM YYYY";
 
@@ -149,13 +144,18 @@ class Calendar extends React.Component {
     });
   };
 
+  clickedDay = event => {
+    let day = event.target.parentElement.children[0].id;
+    this.props.onClickedDay(day);
+  };
+
   onSubmitHandler = event => {
     let form = event.target.parentElement;
     let obj = {
       name: form.name.value,
       time: form.time.value,
       address: form.address.value,
-      date: form.date.value,
+      date: this.props.clickedDay,
       notes: form.notes.value
     };
     form.name.value = "";
@@ -185,12 +185,6 @@ class Calendar extends React.Component {
                 <br />
                 <label>Address:</label>
                 <input type="text" name="address" />
-                <input
-                  type="text"
-                  name="date"
-                  defaultValue={this.props.clickedDay}
-                  hidden
-                />
                 <br />
                 <input type="text" name="notes" />
                 <input
@@ -207,11 +201,7 @@ class Calendar extends React.Component {
                 })}
               </div>
             </div>
-          ) : (
-            <button className="addEvent-btn" onClick={this.props.onAddEvent}>
-              Add Event
-            </button>
-          )}
+          ) : null}
         </div>
       </div>
     );
