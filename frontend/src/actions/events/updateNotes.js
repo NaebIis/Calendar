@@ -14,7 +14,7 @@ export function updateNotes(event, id) {
       .then(resp => resp.json())
       .then(resp => {
         dispatch({
-          type: "UPDATE_NOTES",
+          type: "UPDATE_EVENTS_NOTES",
           payload: resp
         });
       });

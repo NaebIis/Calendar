@@ -36,7 +36,8 @@ const Events = (state = INIT_STATE, action) => {
     case "POST_EVENT": {
       return { ...state, events: [...state.events, action.payload] };
     }
-    case "UPDATE_NOTES": {
+    case "UPDATE_EVENTS_NOTES": {
+      console.log("this is the reducer in eventsreducer");
       const temp = [];
       state.events.map(thing => {
         if (thing.id === action.payload.id) {

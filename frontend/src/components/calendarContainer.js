@@ -167,6 +167,7 @@ class Calendar extends React.Component {
   };
 
   render() {
+    console.log(`${this.props.clickedDay}`);
     return (
       <div>
         <div className="calendar">

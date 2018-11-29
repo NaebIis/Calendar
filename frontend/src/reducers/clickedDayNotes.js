@@ -2,7 +2,8 @@ const INIT_STATE = {
   fetching: false,
   fetched: false,
   error: null,
-  notes: []
+  notes: [],
+  clickedDayNotes: ""
 };
 
 const ClickedDayNotes = (state = INIT_STATE, action) => {
@@ -28,20 +29,23 @@ const ClickedDayNotes = (state = INIT_STATE, action) => {
         error: action.payload
       };
     }
-    case "UPDATE_NOTES": {
+    case "UPDATE_CLICKED_DAY_NOTES": {
       const temp = [];
-      state.notes.map(thing => {
-        if (thing.id === action.payload.id) {
-          thing.notes = action.payload.notes;
-          temp.push(thing);
+      state.notes.map(clickedDayNote => {
+        if (clickedDayNote.id === action.payload.id) {
+          clickedDayNote.notes = action.payload.notes;
+          temp.push(clickedDayNote);
         } else {
-          temp.push(thing);
+          temp.push(clickedDayNote);
         }
       });
       return { ...state, notes: temp };
     }
     case "POST_CLICKED_DAY_NOTES": {
       return { ...state, notes: [...state.notes, action.payload] };
+    }
+    case "NEW_CLICKED_DAY_NOTE": {
+      return { ...state, clickedDayNotes: action.payload };
     }
     default:
       return state;

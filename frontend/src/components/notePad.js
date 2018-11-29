@@ -5,9 +5,11 @@ import NotePadDateList from "./notePadDateList";
 import { editNotes } from "../actions/clickedDayNotes/editNote.js";
 import { postClickedDayNote } from "../actions/clickedDayNotes/postClickedDayNote";
 import { getClickedDayNotes } from "../fetching/fetching";
+import { updateClickedDayNote } from "../actions/clickedDayNotes/updateClickedDayNote";
 
 const mapDispatchToProps = dispatch => {
   return {
+    newTextState: newNotes => dispatch(updateClickedDayNote(newNotes)),
     editClickedDayNotes: (event, id) => dispatch(editNotes(event, id)),
     postClickedDayNote: day => dispatch(postClickedDayNote(day))
   };
@@ -15,6 +17,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
+    text: state.clickedDayNotes.clickedDayNotes,
     events: state.events,
     clickedDay: state.events.clickedDay,
     notes: state.clickedDayNotes.notes,
@@ -23,58 +26,25 @@ const mapStateToProps = state => {
 };
 
 class NotePad extends React.Component {
-  state = {
-    clickedDaysNotes: ""
-  };
   componentWillMount() {
     this.displayedNote();
   }
 
-  displayedNote() {
+  displayedNote = () => {
     let clickedDayNote = this.props.notes.find(note => {
       return note.day === `${this.props.clickedDay}`;
     });
     if (clickedDayNote) {
+      this.props.newTextState(clickedDayNote.notes);
       console.log(clickedDayNote.notes);
       this.setState({
-        clickedDaysNotes: clickedDayNote.notes,
         clickedDaysId: clickedDayNote.id
       });
     } else if (!clickedDayNote) {
       this.props.postClickedDayNote(`${this.props.clickedDay}`);
       setTimeout(getClickedDayNotes(), 100);
     }
-  }
-
-  //   let clickedDayNote = this.props.notes.find(note => {
-  //     return note.day === `${this.props.clickedDay}`;
-  //   });
-  //   if (clickedDayNote) {
-  //     tempNotesString.push(clickedDayNote.notes);
-  //     id = clickedDayNote.id;
-  //     this.setState({
-  //       clickedDaysNotes: tempNotesString,
-  //       clickedDaysId: id
-  //     });
-  //   } else if (!clickedDayNote) {
-  //     if (this.props.clickedDay.length >= 10) {
-  //       this.props.postClickedDayNote(this.props.clickedDay);
-  //       getClickedDayNotes();
-  //       setTimeout(() => {
-  //         let clickedDayNote = this.props.notes.find(note => {
-  //           return note.day === `${this.props.clickedDay}`;
-  //         });
-  //         if (clickedDayNote) {
-  //           tempNotesString.push(clickedDayNote.notes);
-  //           id = clickedDayNote.id;
-  //           this.setState({
-  //             clickedDaysNotes: tempNotesString,
-  //             clickedDaysId: id
-  //           });
-  //         }
-  //       }, 500);
-  //     }
-  //   }
+  };
 
   render() {
     let temp = this.props.notes.sort(function(a, b) {
@@ -87,10 +57,11 @@ class NotePad extends React.Component {
           <textarea
             rows="40"
             cols="45"
-            defaultValue={this.state.clickedDaysNotes}
-            onChange={event =>
-              this.props.editClickedDayNotes(event, this.state.clickedDaysId)
-            }
+            onChange={event => {
+              this.props.editClickedDayNotes(event, this.state.clickedDaysId);
+              this.props.newTextState(event.target.value);
+            }}
+            value={this.props.text}
           />
         </div>
         <div className="todaysNotePad">
@@ -106,7 +77,6 @@ class NotePad extends React.Component {
               {temp.reverse().map(note => {
                 return (
                   <NotePadDateList
-                    displayedNote={this.displayedNote}
                     date={new Date()}
                     key={note.id}
                     note={note}

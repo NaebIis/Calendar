@@ -1,11 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import { clickedDay } from "../actions/events/clickedDay";
+import { updateClickedDayNote } from "../actions/clickedDayNotes/updateClickedDayNote";
+
 // import ContextMenu from "react-context-menu";
 
 const mapStateToProps = state => {
   return {
     events: state.events,
+    notes: state.clickedDayNotes.notes,
     addEvent: state.events.addEventForm,
     clickedDay: state.events.clickedDay
   };
@@ -13,6 +16,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    updateClickedDayNote: newNotes => dispatch(updateClickedDayNote(newNotes)),
     onClickedDay: day => dispatch(clickedDay(day))
   };
 };

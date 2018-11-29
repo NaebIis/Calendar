@@ -1,5 +1,5 @@
 export function editNotes(event, id) {
-  let temp = {
+  let newNotes = {
     notes: event.target.value
   };
   return dispatch => {
@@ -9,12 +9,12 @@ export function editNotes(event, id) {
         "Content-Type": "application/json",
         Accept: "application/json"
       },
-      body: JSON.stringify(temp)
+      body: JSON.stringify(newNotes)
     })
       .then(resp => resp.json())
       .then(resp => {
         dispatch({
-          type: "UPDATE_NOTES",
+          type: "UPDATE_CLICKED_DAY_NOTES",
           payload: resp
         });
       });
