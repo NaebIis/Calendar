@@ -26,7 +26,7 @@ class NotePad extends React.Component {
   state = {
     clickedDaysNotes: ""
   };
-  componentDidMount() {
+  componentWillMount() {
     this.displayedNote();
   }
 
@@ -35,7 +35,7 @@ class NotePad extends React.Component {
       return note.day === `${this.props.clickedDay}`;
     });
     if (clickedDayNote) {
-      debugger;
+      console.log(clickedDayNote.notes);
       this.setState({
         clickedDaysNotes: clickedDayNote.notes,
         clickedDaysId: clickedDayNote.id
@@ -106,6 +106,7 @@ class NotePad extends React.Component {
               {temp.reverse().map(note => {
                 return (
                   <NotePadDateList
+                    displayedNote={this.displayedNote}
                     date={new Date()}
                     key={note.id}
                     note={note}

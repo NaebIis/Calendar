@@ -18,10 +18,6 @@ const mapDispatchToProps = dispatch => {
 };
 // {this.props.date.getMonth()}
 class NotePadDateList extends React.Component {
-  onClickHandler = () => {
-    console.log("Working");
-  };
-
   renderEvent = () => {
     return (
       <li
@@ -29,7 +25,6 @@ class NotePadDateList extends React.Component {
         className="dateListItem"
         onClick={() => {
           this.props.onClickedDay(this.props.note.day);
-          this.onClickHandler();
         }}
       >
         {this.props.note.day.slice(0, 11)}
