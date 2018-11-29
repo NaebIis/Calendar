@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { clickedDay } from "../actions/events/clickedDay";
+// import ContextMenu from "react-context-menu";
 
 const mapStateToProps = state => {
   return {
@@ -17,8 +18,23 @@ const mapDispatchToProps = dispatch => {
 };
 // {this.props.date.getMonth()}
 class NotePadDateList extends React.Component {
+  onClickHandler = () => {
+    console.log("Working");
+  };
+
   renderEvent = () => {
-    return <li className="dateListItem">{this.props.note.day.slice(0, 11)}</li>;
+    return (
+      <li
+        id={this.props.note.id}
+        className="dateListItem"
+        onClick={() => {
+          this.props.onClickedDay(this.props.note.day);
+          this.onClickHandler();
+        }}
+      >
+        {this.props.note.day.slice(0, 11)}
+      </li>
+    );
   };
 
   render() {

@@ -26,51 +26,60 @@ class NotePad extends React.Component {
   state = {
     clickedDaysNotes: ""
   };
-  componentWillMount() {
-    let tempNotesString = [];
-    let id = undefined;
-    // this.props.events.events.map(event => {
-    //   if (event.date === this.props.clickedDay) {
-    //     tempNotesString.push(event.notes + " ");
-    //   }
-    // });
+  componentDidMount() {
+    this.displayedNote();
+  }
 
+  displayedNote() {
     let clickedDayNote = this.props.notes.find(note => {
       return note.day === `${this.props.clickedDay}`;
     });
     if (clickedDayNote) {
-      tempNotesString.push(clickedDayNote.notes);
-      id = clickedDayNote.id;
+      debugger;
       this.setState({
-        clickedDaysNotes: tempNotesString,
-        clickedDaysId: id
+        clickedDaysNotes: clickedDayNote.notes,
+        clickedDaysId: clickedDayNote.id
       });
     } else if (!clickedDayNote) {
-      if (this.props.clickedDay.length >= 10) {
-        this.props.postClickedDayNote(this.props.clickedDay);
-        getClickedDayNotes();
-        setTimeout(() => {
-          let clickedDayNote = this.props.notes.find(note => {
-            return note.day === `${this.props.clickedDay}`;
-          });
-          if (clickedDayNote) {
-            tempNotesString.push(clickedDayNote.notes);
-            id = clickedDayNote.id;
-            this.setState({
-              clickedDaysNotes: tempNotesString,
-              clickedDaysId: id
-            });
-          }
-        }, 500);
-      }
+      this.props.postClickedDayNote(`${this.props.clickedDay}`);
+      setTimeout(getClickedDayNotes(), 100);
     }
   }
+
+  //   let clickedDayNote = this.props.notes.find(note => {
+  //     return note.day === `${this.props.clickedDay}`;
+  //   });
+  //   if (clickedDayNote) {
+  //     tempNotesString.push(clickedDayNote.notes);
+  //     id = clickedDayNote.id;
+  //     this.setState({
+  //       clickedDaysNotes: tempNotesString,
+  //       clickedDaysId: id
+  //     });
+  //   } else if (!clickedDayNote) {
+  //     if (this.props.clickedDay.length >= 10) {
+  //       this.props.postClickedDayNote(this.props.clickedDay);
+  //       getClickedDayNotes();
+  //       setTimeout(() => {
+  //         let clickedDayNote = this.props.notes.find(note => {
+  //           return note.day === `${this.props.clickedDay}`;
+  //         });
+  //         if (clickedDayNote) {
+  //           tempNotesString.push(clickedDayNote.notes);
+  //           id = clickedDayNote.id;
+  //           this.setState({
+  //             clickedDaysNotes: tempNotesString,
+  //             clickedDaysId: id
+  //           });
+  //         }
+  //       }, 500);
+  //     }
+  //   }
 
   render() {
     let temp = this.props.notes.sort(function(a, b) {
       return new Date(b.day) - new Date(a.day);
     });
-    // this.props.notes;
     return (
       <div>
         <h2>{this.props.clickedDay.slice(0, 11)}</h2>

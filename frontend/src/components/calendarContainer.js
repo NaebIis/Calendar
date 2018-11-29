@@ -146,6 +146,7 @@ class Calendar extends React.Component {
 
   clickedDay = event => {
     let day = event.target.parentElement.children[0].id;
+    console.log(day);
     this.props.onClickedDay(day);
   };
 

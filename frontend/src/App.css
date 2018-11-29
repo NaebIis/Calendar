@@ -451,5 +451,18 @@ h5 {
     margin: 0 0 10px 0;
 }
 
+.dateListItem {
+  -webkit-transition: padding 0.2s;
+  border-radius: 2px;
+}
+
+.dateListItem:hover {
+  padding: 9px;
+  border-radius: 4px;
+
+ /* HOVER ON */
+  -webkit-transition: border-radius 2s;
+}
+
 nav ul{height:500px; width:120%;}
 nav ul{overflow:hidden; overflow-y:scroll;}
