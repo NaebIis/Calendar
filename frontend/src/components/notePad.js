@@ -36,7 +36,6 @@ class NotePad extends React.Component {
     });
     if (clickedDayNote) {
       this.props.newTextState(clickedDayNote.notes);
-      console.log(clickedDayNote.notes);
       this.setState({
         clickedDaysId: clickedDayNote.id
       });

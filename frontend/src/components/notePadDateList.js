@@ -16,7 +16,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateClickedDayNote: newNotes => dispatch(updateClickedDayNote(newNotes)),
+    text: newNotes => dispatch(updateClickedDayNote(newNotes)),
     onClickedDay: day => dispatch(clickedDay(day))
   };
 };
@@ -27,8 +27,13 @@ class NotePadDateList extends React.Component {
       <li
         id={this.props.note.id}
         className="dateListItem"
-        onClick={() => {
+        onClick={event => {
           this.props.onClickedDay(this.props.note.day);
+          console.log(
+            event.target.parentElement.parentElement.parentElement.parentElement
+              .children[1].children[0].value
+          );
+          this.props.text(this.props.note.notes);
         }}
       >
         {this.props.note.day.slice(0, 11)}
