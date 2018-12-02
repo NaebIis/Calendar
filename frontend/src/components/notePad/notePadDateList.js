@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { clickedDay } from "../actions/events/clickedDay";
-import { updateClickedDayNote } from "../actions/clickedDayNotes/updateClickedDayNote";
+import { clickedDay } from "../../actions/events/clickedDay";
+import { updateClickedDayNote } from "../../actions/clickedDayNotes/updateClickedDayNote";
+import { updateClickedDayNoteId } from "../../actions/clickedDayNotes/updateClickedDayNoteId";
 
 // import ContextMenu from "react-context-menu";
 
@@ -16,7 +17,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    text: newNotes => dispatch(updateClickedDayNote(newNotes)),
+    text: newNote => dispatch(updateClickedDayNote(newNote)),
+    textId: newNoteId => dispatch(updateClickedDayNoteId(newNoteId)),
     onClickedDay: day => dispatch(clickedDay(day))
   };
 };
@@ -27,13 +29,10 @@ class NotePadDateList extends React.Component {
       <li
         id={this.props.note.id}
         className="dateListItem"
-        onClick={event => {
+        onClick={() => {
           this.props.onClickedDay(this.props.note.day);
-          console.log(
-            event.target.parentElement.parentElement.parentElement.parentElement
-              .children[1].children[0].value
-          );
           this.props.text(this.props.note.notes);
+          this.props.textId(this.props.note.id);
         }}
       >
         {this.props.note.day.slice(0, 11)}

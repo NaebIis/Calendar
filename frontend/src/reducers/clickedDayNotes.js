@@ -3,7 +3,8 @@ const INIT_STATE = {
   fetched: false,
   error: null,
   notes: [],
-  clickedDayNotes: ""
+  clickedDayNotes: "",
+  clickedDayNoteId: ""
 };
 
 const ClickedDayNotes = (state = INIT_STATE, action) => {
@@ -46,6 +47,9 @@ const ClickedDayNotes = (state = INIT_STATE, action) => {
     }
     case "NEW_CLICKED_DAY_NOTE": {
       return { ...state, clickedDayNotes: action.payload };
+    }
+    case "NEW_CLICKED_DAY_NOTE_ID": {
+      return { ...state, clickedDayNoteId: action.payload };
     }
     default:
       return state;

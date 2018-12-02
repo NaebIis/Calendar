@@ -1,15 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import EventSidebar from "./eventSidebar";
-import NotePadDateList from "./notePadDateList";
-import { editNotes } from "../actions/clickedDayNotes/editNote.js";
-import { postClickedDayNote } from "../actions/clickedDayNotes/postClickedDayNote";
-import { getClickedDayNotes } from "../fetching/fetching";
-import { updateClickedDayNote } from "../actions/clickedDayNotes/updateClickedDayNote";
+import EventSidebar from "../events/eventSidebar";
+import NotePadDateList from "../notePad/notePadDateList";
+import { editNotes } from "../../actions/clickedDayNotes/editNote.js";
+import { postClickedDayNote } from "../../actions/clickedDayNotes/postClickedDayNote";
+import { getClickedDayNotes } from "../../fetching/fetching";
+import { updateClickedDayNote } from "../../actions/clickedDayNotes/updateClickedDayNote";
+import { updateClickedDayNoteId } from "../../actions/clickedDayNotes/updateClickedDayNoteId";
 
 const mapDispatchToProps = dispatch => {
   return {
     newTextState: newNotes => dispatch(updateClickedDayNote(newNotes)),
+    newTextStateId: newNoteId => dispatch(updateClickedDayNoteId(newNoteId)),
     editClickedDayNotes: (event, id) => dispatch(editNotes(event, id)),
     postClickedDayNote: day => dispatch(postClickedDayNote(day))
   };
@@ -17,6 +19,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
+    textId: state.clickedDayNotes.clickedDayNoteId,
     text: state.clickedDayNotes.clickedDayNotes,
     events: state.events,
     clickedDay: state.events.clickedDay,
@@ -36,9 +39,7 @@ class NotePad extends React.Component {
     });
     if (clickedDayNote) {
       this.props.newTextState(clickedDayNote.notes);
-      this.setState({
-        clickedDaysId: clickedDayNote.id
-      });
+      this.props.newTextStateId(clickedDayNote.id);
     } else if (!clickedDayNote) {
       this.props.postClickedDayNote(`${this.props.clickedDay}`);
       setTimeout(getClickedDayNotes(), 100);
@@ -57,7 +58,7 @@ class NotePad extends React.Component {
             rows="40"
             cols="45"
             onChange={event => {
-              this.props.editClickedDayNotes(event, this.state.clickedDaysId);
+              this.props.editClickedDayNotes(event, this.props.textId);
               this.props.newTextState(event.target.value);
             }}
             value={this.props.text}

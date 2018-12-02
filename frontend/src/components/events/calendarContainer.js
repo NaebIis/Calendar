@@ -2,10 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import dateFns from "date-fns";
 import Event from "./event";
-import { addEventForm } from "../actions/events/addEventForm";
-import { postEvent } from "../actions/events/postEvent";
-import { clickedDay } from "../actions/events/clickedDay";
-import EventSidebar from "./eventSidebar";
+import { addEventForm } from "../../actions/events/addEventForm";
+import { postEvent } from "../../actions/events/postEvent";
+import { clickedDay } from "../../actions/events/clickedDay";
+import EventSidebar from "../events/eventSidebar";
 
 const mapStateToProps = state => {
   return {

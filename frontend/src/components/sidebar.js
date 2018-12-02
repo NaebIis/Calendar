@@ -25,6 +25,9 @@ class Sidebar extends React.Component {
             <li>
               <Link to="/notePad">NotePad</Link>
             </li>
+            <li>
+              <Link to="/inventory">inventory</Link>
+            </li>
           </ul>
         </nav>
       </div>

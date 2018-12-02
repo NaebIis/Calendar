@@ -32,6 +32,11 @@ export const getClickedDayNotes = () => {
   });
 };
 
+store.dispatch({
+  type: "INVENTORY_ITEMS",
+  payload: fetch(`${URL}/inventory_items`).then(resp => resp.json())
+});
+
 getClickedDayNotes();
 
 // store.dispatch(dispatch => {

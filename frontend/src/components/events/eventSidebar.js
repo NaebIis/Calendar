@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { updateNotes } from "../actions/events/updateNotes";
-import { deleteEvent } from "../actions/events/deleteEvent";
+import { updateNotes } from "../../actions/events/updateNotes.js";
+import { deleteEvent } from "../../actions/events/deleteEvent.js";
 
 const mapDispatchToProps = dispatch => {
   return {
