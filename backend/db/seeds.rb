@@ -7,11 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Event.destroy_all
 ClickedDayNote.destroy_all
-one = Event.create(name: "Pick flowers", time: "13:30 AM", address: "1910 Winter st", date: "Tue Nov 20 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "red, blue, green")
-two = Event.create(name: "cooking", time: "11:30 AM", address: "1910 Winter st", date: "Thu Nov 29 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "gumbo")
-three = Event.create(name: "setting up", time: "12:30 AM", address: "1910 Winter st", date: "Fri Nov 30 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "wedding")
-Event.create(name: "walking the dog", time: "1:30 AM", address: "1910 Winter st", date: "Tue Nov 20 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "6th st")
-Event.create(name: "reading", time: "12:30 AM", address: "1910 Winter st", date: "Tue Nov 20 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "A good book")
+one = Event.create(name: "Pick flowers", time: "13:30 AM", address: "1910 Winter st", date: "Wed Dec 19 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "red, blue, green")
+two = Event.create(name: "cooking", time: "11:30 AM", address: "1910 Winter st", date: "Wed Dec 19 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "gumbo")
+three = Event.create(name: "setting up", time: "12:30 AM", address: "1910 Winter st", date: "Wed Dec 19 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "wedding")
+Event.create(name: "walking the dog", time: "1:30 AM", address: "1910 Winter st", date: "Wed Dec 19 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "6th st")
+Event.create(name: "reading", time: "12:30 AM", address: "1910 Winter st", date: "Wed Dec 19 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "A good book")
 
 ClickedDayNote.create(day: one.date, notes: "Working")
 ClickedDayNote.create(day: two.date, notes: "29th")

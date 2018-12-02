@@ -5,7 +5,7 @@ const INIT_STATE = {
   inventory_items: []
 };
 
-const Inventory_items = (state = INIT_STATE, action) => {
+const InventoryItems = (state = INIT_STATE, action) => {
   switch (action.type) {
     case "INVENTORY_ITEMS_PENDING": {
       return {
@@ -33,4 +33,4 @@ const Inventory_items = (state = INIT_STATE, action) => {
   }
 };
 
-export default Inventory_items;
+export default InventoryItems;

@@ -7,7 +7,7 @@ import Inventory_items from "./inventory_items";
 const rootReducer = combineReducers({
   events: events,
   clickedDayNotes: ClickedDayNotes,
-  Inventory_items: Inventory_items
+  inventoryItems: Inventory_items
 });
 
 export default rootReducer;

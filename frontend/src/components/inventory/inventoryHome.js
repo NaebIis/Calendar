@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
 import React from "react";
+import Item from "./item";
 
 const mapStateToProps = state => {
   return {
-    //
+    allItems: state.inventoryItems.inventory_items
   };
 };
 
@@ -17,7 +18,11 @@ class InventoryHome extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello, World!</h1>
+        <div>
+          {this.props.allItems.map(item => {
+            return <Item item={item} key={item.id} />;
+          })}
+        </div>
       </div>
     );
   }
