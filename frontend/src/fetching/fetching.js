@@ -37,6 +37,16 @@ store.dispatch({
   payload: fetch(`${URL}/inventory_items`).then(resp => resp.json())
 });
 
+store.dispatch({
+  type: "INVENTORY_ITEM_CATEGORIES",
+  payload: fetch(`${URL}/inventory_item_categories`).then(resp => resp.json())
+});
+
+store.dispatch({
+  type: "CATEGORY_ITEM_JOIN",
+  payload: fetch(`${URL}/category_item_joins`).then(resp => resp.json())
+});
+
 getClickedDayNotes();
 
 // store.dispatch(dispatch => {
