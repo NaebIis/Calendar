@@ -7,6 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Event.destroy_all
 ClickedDayNote.destroy_all
+InventoryItem.destroy_all
+CategoryItemJoin.destroy_all
+InventoryItemCategory.destroy_all
+
 one = Event.create(name: "Pick flowers", time: "13:30 AM", address: "1910 Winter st", date: "Wed Dec 19 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "red, blue, green")
 two = Event.create(name: "cooking", time: "11:30 AM", address: "1910 Winter st", date: "Wed Dec 19 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "gumbo")
 three = Event.create(name: "setting up", time: "12:30 AM", address: "1910 Winter st", date: "Wed Dec 19 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "wedding")
@@ -25,3 +29,13 @@ InventoryItem.create(name: "TV")
 InventoryItem.create(name: "Veggie tray")
 InventoryItem.create(name: "Donuts")
 InventoryItem.create(name: "Flowers")
+
+
+InventoryItemCategory.create(name: "Electronics")
+
+
+CategoryItemJoin.create(item_id: 1, category_id: 1)
+CategoryItemJoin.create(item_id: 5, category_id: 1)
+CategoryItemJoin.create(item_id: 1, category_id: 1)
+CategoryItemJoin.create(item_id: 1, category_id: 1)
+

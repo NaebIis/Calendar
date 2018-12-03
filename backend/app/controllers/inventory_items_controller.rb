@@ -1,5 +1,7 @@
 class InventoryItemsController < ApplicationController
-  before_action :set_inventory_item, only: [:show, :update, :destroy]
+  # before_action :set_inventory_item, only: [:show, :update, :destroy]
+  wrap_parameters false
+
 
   # GET /inventory_items
   def index

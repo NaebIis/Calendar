@@ -1,0 +1,2 @@
+class CategoryItemJoin < ApplicationRecord
+end

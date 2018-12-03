@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :inventory_item_categoties
+  resources :category_item_joins
+  resources :inventory_item_categories
   resources :inventory_items
   resources :clicked_day_notes
   resources :events
