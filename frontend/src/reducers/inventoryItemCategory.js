@@ -2,7 +2,9 @@ const INIT_STATE = {
   fetching: false,
   fetched: false,
   error: null,
-  inventory_item_categories: []
+  inventory_item_categories: [],
+  clickedItemCategoryName: "",
+  clickedCategoryItems: []
 };
 
 const InventoryItemCategory = (state = INIT_STATE, action) => {
@@ -26,6 +28,18 @@ const InventoryItemCategory = (state = INIT_STATE, action) => {
         ...state,
         fetching: false,
         error: action.payload
+      };
+    }
+    case "UPDATE_CLICKED_CATEGORY_NAME": {
+      return {
+        ...state,
+        clickedItemCategoryName: action.payload
+      };
+    }
+    case "UPDATE_CLICKED_CATEGORY_ITEMS": {
+      return {
+        ...state,
+        clickedCategoryItems: action.payload
       };
     }
     default:

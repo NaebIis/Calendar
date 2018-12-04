@@ -21,21 +21,25 @@ ClickedDayNote.create(day: one.date, notes: "Working")
 ClickedDayNote.create(day: two.date, notes: "29th")
 ClickedDayNote.create(day: three.date, notes: "30th")
 
-InventoryItem.create(name: "DeskTop Computer")
+computer = InventoryItem.create(name: "DeskTop Computer")
 InventoryItem.create(name: "Desk")
 InventoryItem.create(name: "Table")
 InventoryItem.create(name: "Vasse")
-InventoryItem.create(name: "TV")
+tv = InventoryItem.create(name: "TV")
 InventoryItem.create(name: "Veggie tray")
 InventoryItem.create(name: "Donuts")
 InventoryItem.create(name: "Flowers")
 
 
-InventoryItemCategory.create(name: "Electronics")
+el = InventoryItemCategory.create(name: "Electronics")
+InventoryItemCategory.create(name: "thing1")
+InventoryItemCategory.create(name: "thing2")
+InventoryItemCategory.create(name: "thing3")
+InventoryItemCategory.create(name: "thing4")
 
 
-CategoryItemJoin.create(item_id: 1, category_id: 1)
-CategoryItemJoin.create(item_id: 5, category_id: 1)
+CategoryItemJoin.create(item_id: computer.id, category_id: el.id)
+CategoryItemJoin.create(item_id: tv.id, category_id: el.id)
 CategoryItemJoin.create(item_id: 1, category_id: 1)
 CategoryItemJoin.create(item_id: 1, category_id: 1)
 
