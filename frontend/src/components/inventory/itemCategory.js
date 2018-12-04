@@ -25,29 +25,28 @@ const mapDispatchToProps = dispatch => {
 };
 
 class ItemCategory extends React.Component {
-  itemLists = () => {
-    if (this.props.clickedCategory) {
-      //   this.props.updateClickedCategoryItems(null);
-      let id = this.props.clickedCategory;
-      let temp = [];
-      let join = this.props.categoryItemJoin;
-      this.props.allItems.map(item => {
-        join.map(join => {
-          if (join.category_id === id && join.item_id === item.id) {
-            return temp.push(item);
-          }
-        });
-      });
-      return this.props.updateClickedCategoryItems(temp);
-    }
-  };
+  //   itemLists = () => {
+  //     if (this.props.clickedCategory) {
+  //       this.props.updateClickedCategoryItems([]);
+  //       let id = this.props.clickedCategory;
+  //       let temp = [];
+  //       let join = this.props.categoryItemJoin;
+  //       this.props.allItems.map(item => {
+  //         join.map(join => {
+  //           if (join.category_id === id && join.item_id === item.id) {
+  //             return temp.push(item);
+  //           }
+  //         });
+  //       });
+  //       return this.props.updateClickedCategoryItems(temp);
+  //     }
+  //   };
   renderItemCategory = () => {
     let id = this.props.itemCategory.id;
     return (
       <li
         onClick={() => {
           this.props.editCategoryName(id);
-          this.itemLists();
         }}
       >
         <p>{this.props.itemCategory.name}</p>
