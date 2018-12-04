@@ -37,12 +37,6 @@ const InventoryItemCategory = (state = INIT_STATE, action) => {
         clickedCategoryItems: action.payload.clickedCategoryItems
       };
     }
-    // case "UPDATE_CLICKED_CATEGORY_ITEMS": {
-    //   return {
-    //     ...state,
-    //     clickedCategoryItems: action.payload
-    //   };
-    // }
     default:
       return state;
   }

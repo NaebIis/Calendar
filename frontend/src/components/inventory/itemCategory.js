@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import editClickedCategory from "../../actions/inventory/updateClickedCategory";
-import updateClickedCategoryItems from "../../actions/inventory/updateClickedCategoryItems";
 import Item from "./item";
 
 const mapStateToProps = state => {
@@ -17,30 +16,12 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     editCategoryName: newCategoryId =>
-      dispatch(editClickedCategory(newCategoryId)),
-    updateClickedCategoryItems: newClItems =>
-      dispatch(updateClickedCategoryItems(newClItems))
+      dispatch(editClickedCategory(newCategoryId))
     //
   };
 };
 
 class ItemCategory extends React.Component {
-  //   itemLists = () => {
-  //     if (this.props.clickedCategory) {
-  //       this.props.updateClickedCategoryItems([]);
-  //       let id = this.props.clickedCategory;
-  //       let temp = [];
-  //       let join = this.props.categoryItemJoin;
-  //       this.props.allItems.map(item => {
-  //         join.map(join => {
-  //           if (join.category_id === id && join.item_id === item.id) {
-  //             return temp.push(item);
-  //           }
-  //         });
-  //       });
-  //       return this.props.updateClickedCategoryItems(temp);
-  //     }
-  //   };
   renderItemCategory = () => {
     let id = this.props.itemCategory.id;
     return (
@@ -55,14 +36,7 @@ class ItemCategory extends React.Component {
   };
 
   render() {
-    return (
-      <div>
-        {this.renderItemCategory()}{" "}
-        {this.props.clickedCategoryItems.map(item => {
-          return <Item item={item} key={item.id} />;
-        })}
-      </div>
-    );
+    return <div>{this.renderItemCategory()}</div>;
   }
 }
 

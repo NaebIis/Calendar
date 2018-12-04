@@ -2,7 +2,6 @@ import { connect } from "react-redux";
 import React from "react";
 import Item from "./item";
 import ItemCategory from "./itemCategory";
-import updateClickedCategoryItems from "../../actions/inventory/updateClickedCategoryItems";
 
 const mapStateToProps = state => {
   return {
@@ -16,30 +15,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateClickedCategoryItems: newClItems =>
-      dispatch(updateClickedCategoryItems(newClItems)),
-    updateClickedCategoryItems: newClItems =>
-      dispatch(updateClickedCategoryItems(newClItems))
+    //
   };
 };
 
 class InventoryHome extends React.Component {
-  // itemLists = () => {
-  //   if (this.props.clickedCategory) {
-  //     //   this.props.updateClickedCategoryItems(null);
-  //     let id = this.props.clickedCategory;
-  //     let temp = [];
-  //     let join = this.props.categoryItemJoin;
-  //     this.props.allItems.map(item => {
-  //       join.map(join => {
-  //         if (join.category_id === id && join.item_id === item.id) {
-  //           return temp.push(item);
-  //         }
-  //       });
-  //     });
-  //     return this.props.updateClickedCategoryItems(temp);
-  //   }
-  // };
   render() {
     return (
       <div>
@@ -62,10 +42,32 @@ class InventoryHome extends React.Component {
             </ul>
           </nav>
         </div>
-        <div>
+        <div className="categoryItemsList">
+          {this.props.allItemCategories.map(category => {
+            if (category.id === this.props.clickedCategory) {
+              return <h3>{category.name}</h3>;
+            }
+          })}
           {this.props.clickedCategoryItems.map(item => {
             return <Item item={item} key={item.id} />;
           })}
+        </div>
+        <div className="createNewItem">
+          <form>
+            <h3>Add new Item</h3>
+            <br />
+            <label>
+              Item Name:
+              <input type="text" name="name" />
+            </label>
+            <br />
+            <label>
+              Put In Category:
+              <input type="text" name="category" />
+            </label>
+            <br />
+            <input type="submit" value="Create" />
+          </form>
         </div>
       </div>
     );

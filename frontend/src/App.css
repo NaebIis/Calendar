@@ -455,27 +455,6 @@ h5 {
 nav ul{height:500px; width:100%;}
 nav ul{overflow:hidden; overflow-y:scroll;}
 
-/* .itemCategoryName {
-  position: fixed;
-  right: 700px;
-  top: 150px;
-  font-weight: bold;
-  padding: 5px;
-  border: 3px solid white; 
-    -webkit-box-shadow: 
-      inset 0 0 8px  rgba(0,0,0,0.1),
-            0 0 16px rgba(0,0,0,0.1); 
-    -moz-box-shadow: 
-      inset 0 0 8px  rgba(0,0,0,0.1),
-            0 0 16px rgba(0,0,0,0.1); 
-    box-shadow: 
-      inset 0 0 8px  rgba(0,0,0,0.1),
-            0 0 16px rgba(0,0,0,0.1); 
-    padding: 15px;
-    background: rgba(255,255,255,0.5);
-    margin: 0 0 10px 0;
-} */
-
 .itemCategoryName a {
   text-decoration: none;
 }
@@ -536,4 +515,46 @@ cursor: pointer;
 .itemCategoryName ul li ul li {
   clear: both;
   width: 100%;
+}
+
+.categoryItemsList {
+  position: fixed;
+  left: 300px;
+  top: 150px;
+  font-weight: bold;
+  padding: 5px;
+  border: 3px solid white; 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    padding: 15px;
+    background: rgba(255,255,255,0.5);
+    margin: 0 0 10px 0;
+}
+
+.createNewItem {
+  position: fixed;
+  left: 600px;
+  top: 150px;
+  font-weight: bold;
+  padding: 5px;
+  border: 3px solid white; 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    padding: 15px;
+    background: rgba(255,255,255,0.5);
+    margin: 0 0 10px 0;
 }
