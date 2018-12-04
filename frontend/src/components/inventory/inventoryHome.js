@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import React from "react";
 import Item from "./item";
 import ItemCategory from "./itemCategory";
-import updateClickedCategoryItems from "./updateClickedCategoryItems";
+import updateClickedCategoryItems from "../../actions/inventory/updateClickedCategoryItems";
 
 const mapStateToProps = state => {
   return {
@@ -17,29 +17,30 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     updateClickedCategoryItems: newClItems =>
+      dispatch(updateClickedCategoryItems(newClItems)),
+    updateClickedCategoryItems: newClItems =>
       dispatch(updateClickedCategoryItems(newClItems))
   };
 };
 
 class InventoryHome extends React.Component {
-  itemLists = () => {
-    if (this.props.clickedCategory) {
-      this.props.updateClickedCategoryItems(null);
-      let id = this.props.clickedCategory;
-      let temp = [];
-      let join = this.props.categoryItemJoin;
-      this.props.allItems.map(item => {
-        join.map(join => {
-          if (join.category_id === id && join.item_id === item.id) {
-            return temp.push(item);
-          }
-        });
-      });
-      this.props.updateClickedCategoryItems(temp);
-    }
-  };
+  // itemLists = () => {
+  //   if (this.props.clickedCategory) {
+  //     //   this.props.updateClickedCategoryItems(null);
+  //     let id = this.props.clickedCategory;
+  //     let temp = [];
+  //     let join = this.props.categoryItemJoin;
+  //     this.props.allItems.map(item => {
+  //       join.map(join => {
+  //         if (join.category_id === id && join.item_id === item.id) {
+  //           return temp.push(item);
+  //         }
+  //       });
+  //     });
+  //     return this.props.updateClickedCategoryItems(temp);
+  //   }
+  // };
   render() {
-    this.itemLists();
     return (
       <div>
         <div className="itemCategoryName">
