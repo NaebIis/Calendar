@@ -17,13 +17,10 @@ class InventoryItemsController < ApplicationController
 
   # POST /inventory_items
   def create
-    @inventory_item = InventoryItem.create(name: params[:name])
-
-    if @inventory_item.save
-      render json: @inventory_item, status: :created, location: @inventory_item
-    else
-      render json: @inventory_item.errors, status: :unprocessable_entity
-    end
+    @inventory_item = InventoryItem.create(
+      name: params[:name]
+      )
+    render json: @inventory_item
   end
 
   # PATCH/PUT /inventory_items/1

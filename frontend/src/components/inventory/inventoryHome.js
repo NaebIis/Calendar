@@ -2,6 +2,8 @@ import { connect } from "react-redux";
 import React from "react";
 import Item from "./item";
 import ItemCategory from "./itemCategory";
+import createNewInventoryItem from "../../actions/inventory/createNewInventoryItem";
+import newItemCategoryIdFunction from "../../actions/inventory/newItemCategoryIdFunction";
 
 const mapStateToProps = state => {
   return {
@@ -9,12 +11,16 @@ const mapStateToProps = state => {
     allItemCategories: state.inventoryItemCategory.inventory_item_categories,
     clickedCategory: state.inventoryItemCategory.clickedItemCategoryName,
     clickedCategoryItems: state.inventoryItemCategory.clickedCategoryItems,
-    categoryItemJoin: state.categoryItemJoin.category_item_join
+    categoryItemJoin: state.categoryItemJoin.category_item_join,
+    newItemCategoryId: state.inventoryItems.newItemCategoryId
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    addNewItem: event => dispatch(createNewInventoryItem(event)),
+    newItemCategoryIdFunction: event =>
+      dispatch(newItemCategoryIdFunction(event))
     //
   };
 };
@@ -61,12 +67,38 @@ class InventoryHome extends React.Component {
               <input type="text" name="name" />
             </label>
             <br />
-            <label>
-              Put In Category:
-              <input type="text" name="category" />
-            </label>
+            <input hidden name="category" id={this.props.newItemCategoryId} />
+            <div className="createNewItemCatSelect">
+              <nav role="navigation">
+                <ul>
+                  <li>
+                    Add To Category
+                    <ul class="dropdown">
+                      {this.props.allItemCategories.map(itemCategory => {
+                        return (
+                          <li
+                            id={itemCategory.id}
+                            onClick={event => {
+                              this.props.newItemCategoryIdFunction(event);
+                            }}
+                          >
+                            {itemCategory.name}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+            </div>
             <br />
-            <input type="submit" value="Create" />
+            <input
+              type="submit"
+              value="Create"
+              onClick={event => {
+                this.props.addNewItem(event);
+              }}
+            />
           </form>
         </div>
       </div>
