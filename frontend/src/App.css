@@ -494,7 +494,7 @@ cursor: pointer;
 }
 
 .itemCategoryName ul li ul {
-  background: rgb(109, 101, 101);
+  /* background: rgb(109, 101, 101); */
   visibility: hidden;
   opacity: 0;
   min-width: 5rem;
@@ -579,13 +579,14 @@ cursor: pointer;
 
 .createNewItemCatSelect li {
   color: rgb(255, 255, 255);
-  background: rgb(85, 84, 84);
+  background: rgb(119, 114, 114);
   display: block;
   float: left;
-  padding: 1rem;
+  padding: 0.5rem;
   position: relative;
   text-decoration: none;
   transition-duration: 0.5s;
+  z-index: 10;
 }
   
 .createNewItemCatSelect li a {
@@ -598,13 +599,13 @@ cursor: pointer;
 }
 
 .createNewItemCatSelect ul li ul {
-  background: rgb(109, 101, 101);
+  /* background: rgb(109, 101, 101); */
   visibility: hidden;
   opacity: 0;
   min-width: 5rem;
   position: absolute;
   transition: all 0.5s ease;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   left: 0;
   display: none;
 }
@@ -619,4 +620,14 @@ cursor: pointer;
 .createNewItemCatSelect ul li ul li {
   clear: both;
   width: 100%;
+}
+
+#addItemForm {
+  height: 180px;
+}
+
+#addItemFormCreateButton {
+  position: absolute;
+  top:175px;
+  z-index: 1;
 }

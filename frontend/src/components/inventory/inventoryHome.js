@@ -59,7 +59,7 @@ class InventoryHome extends React.Component {
           })}
         </div>
         <div className="createNewItem">
-          <form>
+          <form id="addItemForm">
             <h3>Add new Item</h3>
             <br />
             <label>
@@ -79,7 +79,9 @@ class InventoryHome extends React.Component {
                           <li
                             id={itemCategory.id}
                             onClick={event => {
-                              this.props.newItemCategoryIdFunction(event);
+                              let id = event.target.id;
+                              console.log(id);
+                              this.props.newItemCategoryIdFunction(id);
                             }}
                           >
                             {itemCategory.name}
@@ -93,10 +95,13 @@ class InventoryHome extends React.Component {
             </div>
             <br />
             <input
+              id="addItemFormCreateButton"
               type="submit"
               value="Create"
               onClick={event => {
                 this.props.addNewItem(event);
+                this.props.newItemCategoryIdFunction(null);
+                event.target.parentElement.children[2].children[0].value = "";
               }}
             />
           </form>
