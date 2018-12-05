@@ -37,6 +37,12 @@ const InventoryItemCategory = (state = INIT_STATE, action) => {
         clickedCategoryItems: action.payload.clickedCategoryItems
       };
     }
+    case "CREATE_NEW_INVENTORY_ITEM": {
+      return {
+        ...state,
+        clickedCategoryItems: [...state.clickedCategoryItems, action.payload]
+      };
+    }
     default:
       return state;
   }

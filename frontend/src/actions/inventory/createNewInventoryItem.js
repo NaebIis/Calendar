@@ -17,14 +17,35 @@ export default function createNewInventoryItem(newItemEvent) {
       },
       body: JSON.stringify(newItemName)
     })
-      .then(resp => resp.json())
-      .then(resp => (newIteCatJoin.item_id = resp.id))
-      .then(resp => (newItemName.id = resp))
+      .then(newItemResp => newItemResp.json())
+      .then(newItemResp => {
+        newIteCatJoin.item_id = newItemResp.id;
+        newItemName = newItemResp;
+      })
       .then(() => {
-        console.log(newItemName, newIteCatJoin);
+        fetch("http://localhost:3000/category_item_joins", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+          body: JSON.stringify(newIteCatJoin)
+        })
+          .then(newJoin => newJoin.json())
+          .then(newJoin => {
+            newIteCatJoin = newJoin;
+          })
+          .then(() => {
+            dispatch({
+              type: "CREATE_NEW_JOIN_ITEM",
+              payload: newIteCatJoin
+            });
+          });
+      })
+      .then(() => {
         dispatch({
           type: "CREATE_NEW_INVENTORY_ITEM",
-          payload: { newItemName, newIteCatJoin }
+          payload: newItemName
         });
       });
   };

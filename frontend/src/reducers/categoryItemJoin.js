@@ -28,6 +28,12 @@ const CategoryItemJoin = (state = INIT_STATE, action) => {
         error: action.payload
       };
     }
+    case "CREATE_NEW_JOIN_ITEM": {
+      return {
+        ...state,
+        category_item_join: [...state.category_item_join, action.payload]
+      };
+    }
     default:
       return state;
   }

@@ -29,12 +29,12 @@ const InventoryItems = (state = INIT_STATE, action) => {
         error: action.payload
       };
     }
-    case "CREATE_NEW_INVENTORY_ITEM": {
-      return {
-        ...state,
-        inventory_items: [...state.inventory_items, action.payload]
-      };
-    }
+    // case "CREATE_NEW_INVENTORY_ITEM": {
+    //   return {
+    //     ...state,
+    //     inventory_items: [...state.inventory_items, action.payload]
+    //   };
+    // }
     case "NEW_ITEM_CAT_ID_FUNCTION": {
       return {
         ...state,
