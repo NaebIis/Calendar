@@ -102,6 +102,21 @@ class InventoryHome extends React.Component {
           <br />
           <p>After adding a new item scroll to the bottom of the items list.</p>
         </div>
+        <div id="createNewPartyEvent">
+          <form id="addItemPartyEventForm">
+            <h3>Create New Event</h3>
+            <br />
+            <label>
+              Event Name:
+              <input type="text" name="name" />
+            </label>
+            <input
+              id="addPartyEventFormCreateButton"
+              type="submit"
+              value="Create"
+            />
+          </form>
+        </div>
         <div className="createNewItem">
           <form id="addItemForm">
             <h3>Add new Item</h3>
@@ -112,11 +127,7 @@ class InventoryHome extends React.Component {
             </label>
             <br />
             <lable>Selected Category:</lable>
-            <input
-              name="category"
-              id={this.props.newItemCategoryId}
-              value={this.props.newItemCategoryName}
-            />
+            <h4 name="category" id={this.props.newItemCategoryId} />
             <div className="createNewItemCatSelect">
               <nav role="navigation">
                 <ul>
@@ -130,7 +141,7 @@ class InventoryHome extends React.Component {
                             onClick={event => {
                               let id = event.target.id;
                               let name = itemCategory.name;
-                              event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[5].value = `${name}`;
+                              event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[5].innerHTML = `${name}`;
                               this.props.newItemCategoryIdFunction(id, name);
                             }}
                           >
