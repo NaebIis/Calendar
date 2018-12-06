@@ -6,7 +6,7 @@ class Item extends React.Component {
   };
 
   render() {
-    return <div>{this.renderItem()}</div>;
+    return this.renderItem();
   }
 }
 

@@ -12,21 +12,23 @@ const mapStateToProps = state => {
     clickedCategory: state.inventoryItemCategory.clickedItemCategoryName,
     clickedCategoryItems: state.inventoryItemCategory.clickedCategoryItems,
     categoryItemJoin: state.categoryItemJoin.category_item_join,
-    newItemCategoryId: state.inventoryItems.newItemCategoryId
+    newItemCategoryId: state.inventoryItems.newItemCategoryId,
+    newItemCategoryName: state.inventoryItems.newItemCategoryName
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     addNewItem: event => dispatch(createNewInventoryItem(event)),
-    newItemCategoryIdFunction: event =>
-      dispatch(newItemCategoryIdFunction(event))
+    newItemCategoryIdFunction: (id, name) =>
+      dispatch(newItemCategoryIdFunction(id, name))
     //
   };
 };
 
 class InventoryHome extends React.Component {
   render() {
+    console.log(this.props.newItemCategoryName);
     return (
       <div>
         <div className="itemCategoryName">
@@ -34,7 +36,7 @@ class InventoryHome extends React.Component {
             <ul>
               <li>
                 Categories
-                <ul class="dropdown">
+                <ul id="dropdown">
                   {this.props.allItemCategories.map(itemCategory => {
                     return (
                       <ItemCategory
@@ -43,6 +45,30 @@ class InventoryHome extends React.Component {
                       />
                     );
                   })}
+                </ul>
+              </li>
+              <li>
+                Thing1
+                <ul id="dropdown">
+                  <li className="DDL">Sub-Thing1</li>
+                  <li className="DDL">Sub-Thing2</li>
+                  <li className="DDL">Sub-Thing3</li>
+                </ul>
+              </li>
+              <li>
+                Thing2
+                <ul id="dropdown">
+                  <li className="DDL">Sub-Thing1</li>
+                  <li className="DDL">Sub-Thing2</li>
+                  <li className="DDL">Sub-Thing3</li>
+                </ul>
+              </li>
+              <li>
+                Thing3
+                <ul id="dropdown">
+                  <li className="DDL">Sub-Thing1</li>
+                  <li className="DDL">Sub-Thing2</li>
+                  <li className="DDL">Sub-Thing3</li>
                 </ul>
               </li>
             </ul>
@@ -54,9 +80,27 @@ class InventoryHome extends React.Component {
               return <h3>{category.name}</h3>;
             }
           })}
-          {this.props.clickedCategoryItems.map(item => {
-            return <Item item={item} key={item.id} />;
-          })}
+          <nav>
+            <ul>
+              {this.props.clickedCategoryItems.map(item => {
+                return <Item item={item} key={item.id} />;
+              })}
+            </ul>
+          </nav>
+        </div>
+        <div id="instructions">
+          <h2>Page Instructions</h2>
+          <p>
+            On this page you can add new items you might want to keep instorage
+            and sort said items be category.
+          </p>
+          <br />
+          <p>
+            More attrubutes could be added to the object that allows for a
+            location or aisle number.
+          </p>
+          <br />
+          <p>After adding a new item scroll to the bottom of the items list.</p>
         </div>
         <div className="createNewItem">
           <form id="addItemForm">
@@ -67,21 +111,27 @@ class InventoryHome extends React.Component {
               <input type="text" name="name" />
             </label>
             <br />
-            <input hidden name="category" id={this.props.newItemCategoryId} />
+            <lable>Selected Category:</lable>
+            <input
+              name="category"
+              id={this.props.newItemCategoryId}
+              value={this.props.newItemCategoryName}
+            />
             <div className="createNewItemCatSelect">
               <nav role="navigation">
                 <ul>
                   <li>
                     Add To Category
-                    <ul class="dropdown">
+                    <ul id="dropdown">
                       {this.props.allItemCategories.map(itemCategory => {
                         return (
                           <li
                             id={itemCategory.id}
                             onClick={event => {
                               let id = event.target.id;
-                              console.log(id);
-                              this.props.newItemCategoryIdFunction(id);
+                              let name = itemCategory.name;
+                              event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[5].value = `${name}`;
+                              this.props.newItemCategoryIdFunction(id, name);
                             }}
                           >
                             {itemCategory.name}

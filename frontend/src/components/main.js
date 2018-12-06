@@ -7,7 +7,9 @@ import InventoryHome from "./inventory/inventoryHome";
 
 const Main = () => (
   <main>
-    <header className="mainHeader" />
+    <header className="mainHeader">
+      <h1 id="App-Name">Edges Calendar</h1>
+    </header>
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/calendar" component={Calendar} />

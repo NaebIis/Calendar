@@ -4,7 +4,9 @@ const INIT_STATE = {
   error: null,
   inventory_item_categories: [],
   clickedItemCategoryName: "",
-  clickedCategoryItems: []
+  clickedCategoryItems: [],
+  newItemCategoryId: "",
+  newItemCategoryName: ""
 };
 
 const InventoryItemCategory = (state = INIT_STATE, action) => {
@@ -41,6 +43,13 @@ const InventoryItemCategory = (state = INIT_STATE, action) => {
       return {
         ...state,
         clickedCategoryItems: [...state.clickedCategoryItems, action.payload]
+      };
+    }
+    case "NEW_ITEM_CAT_ID_FUNCTION": {
+      return {
+        ...state,
+        newItemCategoryId: action.payload.id,
+        newItemCategoryName: action.payload.name
       };
     }
     default:

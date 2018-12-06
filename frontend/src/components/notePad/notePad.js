@@ -86,6 +86,14 @@ class NotePad extends React.Component {
             </ul>
           </nav>
         </div>
+        <div id="notePadIntro">
+          <h2>Page Instructions</h2>
+          <p>When an event is created it can have a description.</p>
+          <p>
+            Even though the Events have descriptions the is also a notPade for
+            the day.
+          </p>
+        </div>
       </div>
     );
   }

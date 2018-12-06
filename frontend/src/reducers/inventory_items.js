@@ -2,8 +2,8 @@ const INIT_STATE = {
   fetching: false,
   fetched: false,
   error: null,
-  inventory_items: [],
-  newItemCategoryId: []
+  inventory_items: []
+  // newItemCategoryId: [],
 };
 
 const InventoryItems = (state = INIT_STATE, action) => {
@@ -29,18 +29,12 @@ const InventoryItems = (state = INIT_STATE, action) => {
         error: action.payload
       };
     }
-    // case "CREATE_NEW_INVENTORY_ITEM": {
+    // case "NEW_ITEM_CAT_ID_FUNCTION": {
     //   return {
     //     ...state,
-    //     inventory_items: [...state.inventory_items, action.payload]
+    //     newItemCategoryId: action.payload
     //   };
     // }
-    case "NEW_ITEM_CAT_ID_FUNCTION": {
-      return {
-        ...state,
-        newItemCategoryId: action.payload
-      };
-    }
     default:
       return state;
   }

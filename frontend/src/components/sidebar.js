@@ -2,10 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 class Sidebar extends React.Component {
-  toggleSidebar() {
-    document.getElementById("sidebar").classList.toggle("active");
-  }
-
   render() {
     return (
       <div id="sidebar">
@@ -26,7 +22,19 @@ class Sidebar extends React.Component {
               <Link to="/notePad">NotePad</Link>
             </li>
             <li>
-              <Link to="/inventory">inventory</Link>
+              <Link to="/inventory">Inventory</Link>
+            </li>
+            <li>
+              <Link to="/">thing1</Link>
+            </li>
+            <li>
+              <Link to="/">thing2</Link>
+            </li>
+            <li>
+              <Link to="/">thing3</Link>
+            </li>
+            <li>
+              <Link to="/">thing4</Link>
             </li>
           </ul>
         </nav>

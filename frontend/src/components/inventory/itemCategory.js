@@ -26,11 +26,12 @@ class ItemCategory extends React.Component {
     let id = this.props.itemCategory.id;
     return (
       <li
+        id="DDL"
         onClick={() => {
           this.props.editCategoryName(id);
         }}
       >
-        <p>{this.props.itemCategory.name}</p>
+        {this.props.itemCategory.name}
       </li>
     );
   };
