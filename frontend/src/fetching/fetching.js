@@ -47,6 +47,16 @@ store.dispatch({
   payload: fetch(`${URL}/category_item_joins`).then(resp => resp.json())
 });
 
+store.dispatch({
+  type: "PARTY_EVENTS",
+  payload: fetch(`${URL}/party_events`).then(resp => resp.json())
+});
+
+store.dispatch({
+  type: "PARTY_EVENT_ITEM_JOINS",
+  payload: fetch(`${URL}/party_event_item_joins`).then(resp => resp.json())
+});
+
 getClickedDayNotes();
 
 // store.dispatch(dispatch => {

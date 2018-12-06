@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import React from "react";
 import Item from "./item";
 import ItemCategory from "./itemCategory";
+import PartyEvent from "../partyEvents/partyEvent";
 import createNewInventoryItem from "../../actions/inventory/createNewInventoryItem";
 import newItemCategoryIdFunction from "../../actions/inventory/newItemCategoryIdFunction";
 
@@ -13,7 +14,12 @@ const mapStateToProps = state => {
     clickedCategoryItems: state.inventoryItemCategory.clickedCategoryItems,
     categoryItemJoin: state.categoryItemJoin.category_item_join,
     newItemCategoryId: state.inventoryItems.newItemCategoryId,
-    newItemCategoryName: state.inventoryItems.newItemCategoryName
+    newItemCategoryName: state.inventoryItems.newItemCategoryName,
+    allpartEventItemJoins: state.partEventItemJoins.partEventItemJoins,
+    allpartyEvents: state.partyEvents.partyEvents,
+
+    clickedPartyEventName: state.partyEvents.clickedPartyEventName,
+    clickedPartyEventItems: state.partyEvents.clickedPartyEventItems
   };
 };
 
@@ -49,9 +55,11 @@ class InventoryHome extends React.Component {
               <li>
                 Party/events
                 <ul id="dropdown">
-                  <li className="DDL">Sub-Thing1</li>
-                  <li className="DDL">Sub-Thing2</li>
-                  <li className="DDL">Sub-Thing3</li>
+                  {this.props.allpartyEvents.map(partyEvent => {
+                    return (
+                      <PartyEvent partyEvent={partyEvent} key={partyEvent.id} />
+                    );
+                  })}
                 </ul>
               </li>
               <li>
@@ -89,14 +97,14 @@ class InventoryHome extends React.Component {
         </div>
         {/*  */}
         <div className="selectedPartyEventList">
-          {this.props.allItemCategories.map(category => {
-            if (category.id === this.props.clickedCategory) {
-              return <h3>{category.name}</h3>;
+          {this.props.allpartyEvents.map(partyEvent => {
+            if (partyEvent.id === this.props.clickedPartyEventName) {
+              return <h3>{partyEvent.name}</h3>;
             }
           })}
           <nav>
             <ul>
-              {this.props.clickedCategoryItems.map(item => {
+              {this.props.clickedPartyEventItems.map(item => {
                 return <Item item={item} key={item.id} />;
               })}
             </ul>

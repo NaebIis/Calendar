@@ -1,0 +1,2 @@
+class PartyEventItemJoin < ApplicationRecord
+end

@@ -2,26 +2,26 @@ const INIT_STATE = {
   fetching: false,
   fetched: false,
   error: null,
-  inventory_items: []
+  partEventItemJoins: []
 };
 
-const InventoryItems = (state = INIT_STATE, action) => {
+const PartEventItemJoins = (state = INIT_STATE, action) => {
   switch (action.type) {
-    case "INVENTORY_ITEMS_PENDING": {
+    case "PARTY_EVENT_ITEM_JOINS_PENDING": {
       return {
         ...state,
         fetching: true
       };
     }
-    case "INVENTORY_ITEMS_FULFILLED": {
+    case "PARTY_EVENT_ITEM_JOINS_FULFILLED": {
       return {
         ...state,
         fetching: false,
         fetched: true,
-        inventory_items: action.payload
+        partEventItemJoins: action.payload
       };
     }
-    case "INVENTORY_ITEMS_REJECTED": {
+    case "PARTY_EVENT_ITEM_JOINS_REJECTED": {
       return {
         ...state,
         fetching: false,
@@ -33,4 +33,4 @@ const InventoryItems = (state = INIT_STATE, action) => {
   }
 };
 
-export default InventoryItems;
+export default PartEventItemJoins;

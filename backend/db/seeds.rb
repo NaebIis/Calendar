@@ -10,6 +10,8 @@ ClickedDayNote.destroy_all
 InventoryItem.destroy_all
 CategoryItemJoin.destroy_all
 InventoryItemCategory.destroy_all
+PartyEvent.destroy_all
+PartyEventItemJoin.destroy_all
 
 one = Event.create(name: "Pick flowers", time: "13:30 AM", address: "1910 Winter st", date: "Wed Dec 19 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "red, blue, green")
 two = Event.create(name: "cooking", time: "11:30 AM", address: "1910 Winter st", date: "Wed Dec 19 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "gumbo")
@@ -42,4 +44,16 @@ CategoryItemJoin.create(item_id: computer.id, category_id: el.id)
 CategoryItemJoin.create(item_id: tv.id, category_id: el.id)
 CategoryItemJoin.create(item_id: 1, category_id: 1)
 CategoryItemJoin.create(item_id: 1, category_id: 1)
+
+partyEvent1 = PartyEvent.create(name: "Wedding", location: "WeWork Wedding Park")
+partyEvent2 = PartyEvent.create(name: "Wedding1", location: "WeWork Wedding Park")
+partyEvent3 = PartyEvent.create(name: "Wedding2", location: "WeWork Wedding Park")
+partyEvent4 = PartyEvent.create(name: "Wedding3", location: "WeWork Wedding Park")
+partyEvent5 = PartyEvent.create(name: "Wedding4", location: "WeWork Wedding Park")
+partyEvent6 = PartyEvent.create(name: "Wedding5", location: "WeWork Wedding Park")
+
+PartyEventItemJoin.create(item_id: computer.id, partyEvent_id: partyEvent1.id)
+PartyEventItemJoin.create(item_id: tv.id, partyEvent_id: partyEvent1.id)
+PartyEventItemJoin.create(item_id: computer.id, partyEvent_id: partyEvent3.id)
+PartyEventItemJoin.create(item_id: computer.id, partyEvent_id: partyEvent5.id)
 

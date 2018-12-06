@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import editClickedCategory from "../../actions/inventory/updateClickedCategory";
+import editClickedPartyEvent from "../../actions/partyEvents/updatePartyEvent";
 
 const mapStateToProps = state => {
   return {
@@ -14,32 +14,33 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    editCategoryName: newCategoryId =>
-      dispatch(editClickedCategory(newCategoryId))
+    editPartyEventName: newCategoryId =>
+      dispatch(editClickedPartyEvent(newCategoryId))
     //
   };
 };
 
-class ItemCategory extends React.Component {
-  renderItemCategory = () => {
-    let id = this.props.itemCategory.id;
+class PartyEvent extends React.Component {
+  renderpartyEvent = () => {
+    let id = this.props.partyEvent.id;
     return (
       <li
         onClick={() => {
-          this.props.editCategoryName(id);
+          this.props.editPartyEventName(id);
+          //
         }}
       >
-        {this.props.itemCategory.name}
+        {this.props.partyEvent.name}
       </li>
     );
   };
 
   render() {
-    return <div>{this.renderItemCategory()}</div>;
+    return <div>{this.renderpartyEvent()}</div>;
   }
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ItemCategory);
+)(PartyEvent);

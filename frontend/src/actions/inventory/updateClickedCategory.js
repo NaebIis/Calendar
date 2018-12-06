@@ -5,7 +5,6 @@ export default function updateClickedCategory(newCategoryId) {
   let id = newCategoryId;
   let clickedCategoryItems = [];
   let join = store.getState().categoryItemJoin.category_item_join;
-
   allItems.map(item => {
     join.map(join => {
       if (join.category_id === id && join.item_id === item.id) {
