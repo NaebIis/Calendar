@@ -1,0 +1,2 @@
+class PartyEvent < ApplicationRecord
+end

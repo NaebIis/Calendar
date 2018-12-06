@@ -28,7 +28,6 @@ const mapDispatchToProps = dispatch => {
 
 class InventoryHome extends React.Component {
   render() {
-    console.log(this.props.newItemCategoryName);
     return (
       <div>
         <div className="itemCategoryName">
@@ -48,7 +47,7 @@ class InventoryHome extends React.Component {
                 </ul>
               </li>
               <li>
-                Thing1
+                Party/events
                 <ul id="dropdown">
                   <li className="DDL">Sub-Thing1</li>
                   <li className="DDL">Sub-Thing2</li>
@@ -88,6 +87,22 @@ class InventoryHome extends React.Component {
             </ul>
           </nav>
         </div>
+        {/*  */}
+        <div className="selectedPartyEventList">
+          {this.props.allItemCategories.map(category => {
+            if (category.id === this.props.clickedCategory) {
+              return <h3>{category.name}</h3>;
+            }
+          })}
+          <nav>
+            <ul>
+              {this.props.clickedCategoryItems.map(item => {
+                return <Item item={item} key={item.id} />;
+              })}
+            </ul>
+          </nav>
+        </div>
+        {/*  */}
         <div id="instructions">
           <h2>Page Instructions</h2>
           <p>

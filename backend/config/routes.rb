@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :party_events
   resources :category_item_joins
   resources :inventory_item_categories
   resources :inventory_items
