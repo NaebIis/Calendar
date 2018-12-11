@@ -28,6 +28,12 @@ const PartEventItemJoins = (state = INIT_STATE, action) => {
         error: action.payload
       };
     }
+    // case "ADD_CLICKED_PARTY_EVENT_JOIN": {
+    //   return {
+    //     ...state,
+    //     partEventItemJoins: [...state.partEventItemJoins, action.payload]
+    //   };
+    // }
     default:
       return state;
   }

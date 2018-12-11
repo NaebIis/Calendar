@@ -1,13 +1,12 @@
-export default function createNewInventoryItem(newItemEvent) {
-  newItemEvent.preventDefault();
-  let tempEvent = newItemEvent.target.parentElement.children;
+export default function createNewInventoryItem(event, categoryId) {
+  event.preventDefault();
+  let tempEvent = event.target.parentElement.children;
   let newItemName = {
     name: tempEvent[2].children.name.value
   };
   let newIteCatJoin = {
-    category_id: tempEvent[4].id
+    category_id: categoryId
   };
-
   return dispatch => {
     fetch("http://localhost:3000/inventory_items", {
       method: "POST",

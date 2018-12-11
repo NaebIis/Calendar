@@ -5,6 +5,7 @@ import ItemCategory from "./itemCategory";
 import PartyEvent from "../partyEvents/partyEvent";
 import createNewInventoryItem from "../../actions/inventory/createNewInventoryItem";
 import newItemCategoryIdFunction from "../../actions/inventory/newItemCategoryIdFunction";
+import addToPartyEvent from "../../actions/partyEvents/addToPartyEvent";
 
 const mapStateToProps = state => {
   return {
@@ -13,7 +14,7 @@ const mapStateToProps = state => {
     clickedCategory: state.inventoryItemCategory.clickedItemCategoryName,
     clickedCategoryItems: state.inventoryItemCategory.clickedCategoryItems,
     categoryItemJoin: state.categoryItemJoin.category_item_join,
-    newItemCategoryId: state.inventoryItems.newItemCategoryId,
+    newItemCategoryId: state.inventoryItemCategory.newItemCategoryId,
     newItemCategoryName: state.inventoryItems.newItemCategoryName,
     allpartEventItemJoins: state.partEventItemJoins.partEventItemJoins,
     allpartyEvents: state.partyEvents.partyEvents,
@@ -25,9 +26,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addNewItem: event => dispatch(createNewInventoryItem(event)),
+    addNewItem: (event, categoryId) =>
+      dispatch(createNewInventoryItem(event, categoryId)),
     newItemCategoryIdFunction: (id, name) =>
-      dispatch(newItemCategoryIdFunction(id, name))
+      dispatch(newItemCategoryIdFunction(id, name)),
+    addToPartyEvent: (item, partyEventid) =>
+      dispatch(addToPartyEvent(item, partyEventid))
     //
   };
 };
@@ -90,7 +94,21 @@ class InventoryHome extends React.Component {
           <nav>
             <ul>
               {this.props.clickedCategoryItems.map(item => {
-                return <Item item={item} key={item.id} />;
+                return (
+                  <li>
+                    <Item item={item} key={item.id} />
+                    <button
+                      onClick={() => {
+                        this.props.addToPartyEvent(
+                          item,
+                          this.props.clickedPartyEventName
+                        );
+                      }}
+                    >
+                      Add To Event/Party
+                    </button>
+                  </li>
+                );
               })}
             </ul>
           </nav>
@@ -105,25 +123,14 @@ class InventoryHome extends React.Component {
           <nav>
             <ul>
               {this.props.clickedPartyEventItems.map(item => {
-                return <Item item={item} key={item.id} />;
+                return (
+                  <li>
+                    <Item item={item} key={item.id} />
+                  </li>
+                );
               })}
             </ul>
           </nav>
-        </div>
-        {/*  */}
-        <div id="instructions">
-          <h2>Page Instructions</h2>
-          <p>
-            On this page you can add new items you might want to keep instorage
-            and sort said items be category.
-          </p>
-          <br />
-          <p>
-            More attrubutes could be added to the object that allows for a
-            location or aisle number.
-          </p>
-          <br />
-          <p>After adding a new item scroll to the bottom of the items list.</p>
         </div>
         <div id="createNewPartyEvent">
           <form id="addItemPartyEventForm">
@@ -183,8 +190,8 @@ class InventoryHome extends React.Component {
               type="submit"
               value="Create"
               onClick={event => {
-                this.props.addNewItem(event);
-                this.props.newItemCategoryIdFunction(null);
+                console.log("=======", this.props.newItemCategoryId);
+                this.props.addNewItem(event, this.props.newItemCategoryId);
                 event.target.parentElement.children[2].children[0].value = "";
               }}
             />

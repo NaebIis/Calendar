@@ -380,9 +380,9 @@ text-decoration: none;
     margin: 0 0 10px 0;
 }
 
-.home {
-  position: fixed;
-  left: 200px;
+#home {
+  position: absolute;
+  left: 250qpx;
 }
 
 .mainHeader {
@@ -804,7 +804,7 @@ cursor: pointer;
 .selectedPartyEventList {
   width: 189px; 
   position: fixed;
-  left: 1440px;
+  left: 1220px;
   top: 150px;
   font-weight: bold;
   padding: 5px;

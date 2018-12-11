@@ -19,7 +19,7 @@ class PartyEventItemJoinsController < ApplicationController
   def create
     @party_event_item_join = PartyEventItemJoin.create(
       item_id: params[:item_id],
-    category_id: params[:partyEvent_id])
+      partyEvent_id: params[:partyEvent_id])
 
     render json: @party_event_item_join
   end

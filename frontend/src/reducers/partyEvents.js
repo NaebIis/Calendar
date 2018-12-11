@@ -39,6 +39,15 @@ const PartEvents = (state = INIT_STATE, action) => {
         clickedPartyEventItems: action.payload.clickedPartyEventItems
       };
     }
+    case "ADD_CLICKED_PARTY_EVENTS": {
+      return {
+        ...state,
+        clickedPartyEventItems: [
+          ...state.clickedPartyEventItems,
+          action.payload
+        ]
+      };
+    }
     default:
       return state;
   }

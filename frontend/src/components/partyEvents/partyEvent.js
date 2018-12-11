@@ -27,7 +27,6 @@ class PartyEvent extends React.Component {
       <li
         onClick={() => {
           this.props.editPartyEventName(id);
-          //
         }}
       >
         {this.props.partyEvent.name}
