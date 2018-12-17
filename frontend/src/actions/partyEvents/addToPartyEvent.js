@@ -1,5 +1,3 @@
-import getPartyEvents from "../../fetching/fetching";
-
 export default function addToPartyEvent(newPartyEventJoin, partyEventId) {
   let obj = {
     item_id: newPartyEventJoin.id,
@@ -20,10 +18,6 @@ export default function addToPartyEvent(newPartyEventJoin, partyEventId) {
           type: "ADD_CLICKED_PARTY_EVENTS",
           payload: newPartyEventJoin
         })
-      )
-      .then(resp => {
-        console.log(newPartyEventJoin);
-        // this.getPartyEvents();
-      });
+      );
   };
 }

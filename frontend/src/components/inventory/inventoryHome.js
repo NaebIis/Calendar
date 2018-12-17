@@ -6,6 +6,7 @@ import PartyEvent from "../partyEvents/partyEvent";
 import createNewInventoryItem from "../../actions/inventory/createNewInventoryItem";
 import newItemCategoryIdFunction from "../../actions/inventory/newItemCategoryIdFunction";
 import addToPartyEvent from "../../actions/partyEvents/addToPartyEvent";
+import deletePartyEvent from "../../actions/partyEvents/deletePartyEvent";
 
 const mapStateToProps = state => {
   return {
@@ -18,7 +19,6 @@ const mapStateToProps = state => {
     newItemCategoryName: state.inventoryItems.newItemCategoryName,
     allpartEventItemJoins: state.partEventItemJoins.partEventItemJoins,
     allpartyEvents: state.partyEvents.partyEvents,
-
     clickedPartyEventName: state.partyEvents.clickedPartyEventName,
     clickedPartyEventItems: state.partyEvents.clickedPartyEventItems
   };
@@ -31,8 +31,8 @@ const mapDispatchToProps = dispatch => {
     newItemCategoryIdFunction: (id, name) =>
       dispatch(newItemCategoryIdFunction(id, name)),
     addToPartyEvent: (item, partyEventid) =>
-      dispatch(addToPartyEvent(item, partyEventid))
-    //
+      dispatch(addToPartyEvent(item, partyEventid)),
+    deletePartyEvent: id => dispatch(deletePartyEvent(id))
   };
 };
 
@@ -131,6 +131,15 @@ class InventoryHome extends React.Component {
               })}
             </ul>
           </nav>
+          {this.props.clickedPartyEventItems != "" ? (
+            <button
+              onClick={() => {
+                this.props.deletePartyEvent(this.props.clickedPartyEventName);
+              }}
+            >
+              Delete Event
+            </button>
+          ) : null}
         </div>
         <div id="createNewPartyEvent">
           <form id="addItemPartyEventForm">

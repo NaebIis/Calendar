@@ -33,6 +33,8 @@ class PartyEventsController < ApplicationController
 
   # DELETE /party_events/1
   def destroy
+    @party_event = PartyEvent.find(params[:id])
+    # @category_item_join = CategoryItemJoin.find(params[:id]) 
     @party_event.destroy
   end
 
