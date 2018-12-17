@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import editClickedPartyEvent from "../../actions/partyEvents/updatePartyEvent";
+import { getPartyEvents } from "../../fetching/fetching"
 
 const mapStateToProps = state => {
   return {
@@ -26,6 +27,7 @@ class PartyEvent extends React.Component {
     return (
       <li
         onClick={() => {
+          getPartyEvents()
           this.props.editPartyEventName(id);
         }}
       >

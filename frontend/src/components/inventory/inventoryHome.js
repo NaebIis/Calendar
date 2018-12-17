@@ -6,7 +6,6 @@ import PartyEvent from "../partyEvents/partyEvent";
 import createNewInventoryItem from "../../actions/inventory/createNewInventoryItem";
 import newItemCategoryIdFunction from "../../actions/inventory/newItemCategoryIdFunction";
 import addToPartyEvent from "../../actions/partyEvents/addToPartyEvent";
-// import getInventoryItems from "../../fetching/fetching"
 
 const mapStateToProps = state => {
   return {
@@ -191,7 +190,6 @@ class InventoryHome extends React.Component {
               type="submit"
               value="Create"
               onClick={event => {
-                console.log("=======", this.props.newItemCategoryId);
                 this.props.addNewItem(event, this.props.newItemCategoryId);
                 event.target.parentElement.children[2].children[0].value = "";
               }}
