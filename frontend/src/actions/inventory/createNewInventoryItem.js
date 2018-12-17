@@ -1,5 +1,8 @@
+import { getInventoryItems } from "../../fetching/fetching";
+
 export default function createNewInventoryItem(event, categoryId) {
   event.preventDefault();
+  getInventoryItems();
   let tempEvent = event.target.parentElement.children;
   let newItemName = {
     name: tempEvent[2].children.name.value

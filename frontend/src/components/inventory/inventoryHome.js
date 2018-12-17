@@ -6,6 +6,7 @@ import PartyEvent from "../partyEvents/partyEvent";
 import createNewInventoryItem from "../../actions/inventory/createNewInventoryItem";
 import newItemCategoryIdFunction from "../../actions/inventory/newItemCategoryIdFunction";
 import addToPartyEvent from "../../actions/partyEvents/addToPartyEvent";
+// import getInventoryItems from "../../fetching/fetching"
 
 const mapStateToProps = state => {
   return {

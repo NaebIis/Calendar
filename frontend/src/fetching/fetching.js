@@ -31,11 +31,12 @@ export const getClickedDayNotes = () => {
     payload: fetch(`${URL}/clicked_day_notes`).then(resp => resp.json())
   });
 };
-
-store.dispatch({
-  type: "INVENTORY_ITEMS",
-  payload: fetch(`${URL}/inventory_items`).then(resp => resp.json())
-});
+export const getInventoryItems = () => {
+  store.dispatch({
+    type: "INVENTORY_ITEMS",
+    payload: fetch(`${URL}/inventory_items`).then(resp => resp.json())
+  });
+};
 
 store.dispatch({
   type: "INVENTORY_ITEM_CATEGORIES",
@@ -58,6 +59,8 @@ export const getPartyEvents = () => {
     payload: fetch(`${URL}/party_event_item_joins`).then(resp => resp.json())
   });
 };
+
+getInventoryItems();
 getPartyEvents();
 getClickedDayNotes();
 
