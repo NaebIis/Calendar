@@ -1,3 +1,5 @@
+import { getPartyEvents } from "../../fetching/fetching";
+
 export default function deletePartyEvent(partyEventName) {
   console.log("=====", partyEventName);
   return dispatch => {
@@ -7,14 +9,12 @@ export default function deletePartyEvent(partyEventName) {
         "Content-Type": "application/json",
         Accept: "application/json"
       }
-    })
-      .then(resp => resp.json())
-      .then(resp => console.log(resp))
-      .then(() =>
-        dispatch({
-          type: "THING",
-          payload: null
-        })
-      );
+    }).then(() => {
+      let temp = getPartyEvents;
+      dispatch({
+        type: "NEW_PARTY_EVENT_LIST",
+        payload: temp
+      });
+    });
   };
 }

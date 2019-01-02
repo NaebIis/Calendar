@@ -48,10 +48,12 @@ store.dispatch({
   payload: fetch(`${URL}/category_item_joins`).then(resp => resp.json())
 });
 
-store.dispatch({
-  type: "PARTY_EVENTS",
-  payload: fetch(`${URL}/party_events`).then(resp => resp.json())
-});
+export const getPartyEvents = () => {
+  store.dispatch({
+    type: "PARTY_EVENTS",
+    payload: fetch(`${URL}/party_events`).then(resp => resp.json())
+  });
+};
 
 export const getPartyEventJoins = () => {
   store.dispatch({
@@ -59,6 +61,7 @@ export const getPartyEventJoins = () => {
     payload: fetch(`${URL}/party_event_item_joins`).then(resp => resp.json())
   });
 };
+getPartyEvents();
 getInventoryItems();
 getPartyEventJoins();
 getClickedDayNotes();

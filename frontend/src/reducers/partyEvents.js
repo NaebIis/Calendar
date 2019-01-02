@@ -48,6 +48,12 @@ const PartEvents = (state = INIT_STATE, action) => {
         ]
       };
     }
+    case "NEW_PARTY_EVENT_LIST": {
+      return {
+        ...state,
+        partyEvents: action.payload
+      };
+    }
     default:
       return state;
   }
