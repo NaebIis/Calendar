@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contacts
   resources :party_event_item_joins
   resources :party_events
   resources :category_item_joins

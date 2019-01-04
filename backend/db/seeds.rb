@@ -12,6 +12,7 @@ CategoryItemJoin.destroy_all
 InventoryItemCategory.destroy_all
 PartyEvent.destroy_all
 PartyEventItemJoin.destroy_all
+Contact.destroy_all
 
 one = Event.create(name: "Pick flowers", time: "13:30 AM", address: "1910 Winter st", date: "Sun Dec 23 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "red, blue, green")
 two = Event.create(name: "cooking", time: "11:30 AM", address: "1910 Winter st", date: "Wed Dec 19 2018 00:00:00 GMT-0600 (Central Standard Time)", notes: "gumbo")
@@ -56,4 +57,10 @@ PartyEventItemJoin.create(item_id: computer.id, partyEvent_id: partyEvent1.id)
 PartyEventItemJoin.create(item_id: tv.id, partyEvent_id: partyEvent1.id)
 PartyEventItemJoin.create(item_id: computer.id, partyEvent_id: partyEvent3.id)
 PartyEventItemJoin.create(item_id: computer.id, partyEvent_id: partyEvent5.id)
+
+Contact.create(name: "Bob", phone: "5555555555", email: "theDude@gmail.com", address: "105 South st")
+Contact.create(name: "Kim", phone: "9124329234", email: "theWOman@gmail.com", address: "105 South st")
+Contact.create(name: "Joe", phone: "9234321234", email: "theCoolGuy@gmail.com", address: "105 South st")
+Contact.create(name: "Nicky", phone: "9234361234", email: "theSlut@gmail.com", address: "105 South st")
+
 

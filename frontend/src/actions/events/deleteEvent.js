@@ -1,8 +1,7 @@
 export function deleteEvent(id) {
-  //   console.log(event.target.value);
   return dispatch => {
     fetch(`http://localhost:3000/events/${id}`, {
-      method: "Delete",
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json"

@@ -25,7 +25,7 @@ class Sidebar extends React.Component {
               <Link to="/inventory">Inventory</Link>
             </li>
             <li>
-              <Link to="/">thing1</Link>
+              <Link to="/contacts">Contacts</Link>
             </li>
             <li>
               <Link to="/">thing2</Link>

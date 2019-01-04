@@ -7,6 +7,7 @@ import CategoryItemJoin from "./categoryItemJoin";
 import InventoryItemCategory from "./inventoryItemCategory";
 import PartyEvents from "./partyEvents";
 import PartEventItemJoins from "./partyEventItemJoins";
+import Contacts from "./contacts";
 
 const rootReducer = combineReducers({
   events: events,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   inventoryItemCategory: InventoryItemCategory,
   inventoryItems: Inventory_items,
   partyEvents: PartyEvents,
-  partEventItemJoins: PartEventItemJoins
+  partEventItemJoins: PartEventItemJoins,
+  contacts: Contacts
 });
 
 export default rootReducer;

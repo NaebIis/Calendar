@@ -4,6 +4,7 @@ import Home from "./home";
 import Calendar from "./events/calendarContainer";
 import NotePad from "./notePad/notePad";
 import InventoryHome from "./inventory/inventoryHome";
+import ContactsHome from "./contacts/contactsHome";
 
 const Main = () => (
   <main>
@@ -15,6 +16,7 @@ const Main = () => (
       <Route exact path="/calendar" component={Calendar} />
       <Route exact path="/notePad" component={NotePad} />
       <Route exact path="/inventory" component={InventoryHome} />
+      <Route exact path="/contacts" component={ContactsHome} />
     </Switch>
   </main>
 );

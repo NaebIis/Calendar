@@ -8,7 +8,6 @@ const URL = "http://localhost:3000";
 
 const makeStore = () => {
   const store = createStore(
-    // reducer,
     rootReducer,
     compose(
       applyMiddleware(promise(), thunk, createLogger()),
@@ -61,6 +60,11 @@ export const getPartyEventJoins = () => {
     payload: fetch(`${URL}/party_event_item_joins`).then(resp => resp.json())
   });
 };
+
+store.dispatch({
+  type: "CONTACTS",
+  payload: fetch(`${URL}/contacts`).then(resp => resp.json())
+});
 getPartyEvents();
 getInventoryItems();
 getPartyEventJoins();
