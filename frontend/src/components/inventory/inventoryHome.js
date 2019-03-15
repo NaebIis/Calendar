@@ -131,7 +131,7 @@ class InventoryHome extends React.Component {
               })}
             </ul>
           </nav>
-          {this.props.clickedPartyEventItems != "" ? (
+          {this.props.clickedPartyEventItems !== "" ? (
             <button
               onClick={() => {
                 this.props.deletePartyEvent(this.props.clickedPartyEventName);

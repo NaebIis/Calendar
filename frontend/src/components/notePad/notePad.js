@@ -47,12 +47,12 @@ class NotePad extends React.Component {
   };
 
   render() {
-    let temp = this.props.notes.sort(function(a, b) {
+    let temp = this.props.notes.sort(function (a, b) {
       return new Date(b.day) - new Date(a.day);
     });
     return (
       <div>
-        <h2>{this.props.clickedDay.slice(0, 11)}</h2>
+        <h2 class="currentDay">{this.props.clickedDay.slice(0, 11)}</h2>
         <div className="notePad">
           <textarea
             rows="40"

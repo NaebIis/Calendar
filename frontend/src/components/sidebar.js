@@ -5,11 +5,11 @@ class Sidebar extends React.Component {
   render() {
     return (
       <div id="sidebar">
-        <div className="toggle-btn" onClick={this.toggleSidebar}>
-          {/* <span hidden />
+        {/* <div className="toggle-btn" onClick={this.toggleSidebar}> */}
+        {/* <span hidden />
           <span hidden />
           <span hidden /> */}
-        </div>
+        {/* </div> */}
         <nav>
           <ul>
             <li>
@@ -26,15 +26,6 @@ class Sidebar extends React.Component {
             </li>
             <li>
               <Link to="/contacts">Contacts</Link>
-            </li>
-            <li>
-              <Link to="/">thing2</Link>
-            </li>
-            <li>
-              <Link to="/">thing3</Link>
-            </li>
-            <li>
-              <Link to="/">thing4</Link>
             </li>
           </ul>
         </nav>
