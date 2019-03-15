@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import dateFns from "date-fns";
 import Event from "./event";
-import { addEventForm } from "../../actions/events/addEventForm";
+// import { addEventForm } from "../../actions/events/addEventForm";
 import { postEvent } from "../../actions/events/postEvent";
 import { clickedDay } from "../../actions/events/clickedDay";
 import EventSidebar from "../events/eventSidebar";
@@ -17,7 +17,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddEvent: () => dispatch(addEventForm()),
+    // onAddEvent: () => dispatch(addEventForm()),
     postEvent: obj => dispatch(postEvent(obj)),
     onClickedDay: day => dispatch(clickedDay(day))
   };
@@ -90,9 +90,9 @@ class Calendar extends React.Component {
               !dateFns.isSameMonth(day, monthStart)
                 ? "disabled"
                 : dateFns.isSameDay(day, selectedDate)
-                ? "selected"
-                : ""
-            }`}
+                  ? "selected"
+                  : ""
+              }`}
             key={day}
             onClick={event => {
               this.onDateClick(dateFns.parse(cloneDay));
@@ -103,7 +103,6 @@ class Calendar extends React.Component {
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
             <div className="con">
-              <br />
               <br />
               {this.props.events.events.map(event => {
                 return <Event day={day} key={event.id} event={event} />;
@@ -128,7 +127,7 @@ class Calendar extends React.Component {
       {
         selectedDate: day
       },
-      () => this.props.onAddEvent()
+      // () => this.props.onAddEvent()
     );
   };
 
@@ -146,7 +145,6 @@ class Calendar extends React.Component {
 
   clickedDay = event => {
     let day = event.target.parentElement.children[0].id;
-    console.log(day);
     this.props.onClickedDay(day);
   };
 
@@ -167,7 +165,7 @@ class Calendar extends React.Component {
   };
 
   render() {
-    console.log(`${this.props.clickedDay}`);
+    // console.log(this.state.selectedDate);
     return (
       <div>
         <div className="calendar">

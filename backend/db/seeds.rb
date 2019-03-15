@@ -20,9 +20,9 @@ three = Event.create(name: "setting up", time: "12:30 AM", address: "1910 Winter
 Event.create(name: "walking the dog", time: "1:30 AM", address: "1910 Winter st", date: "Thu Mar 21 2019 00:00:00 GMT-0500 (Central Daylight Time)", notes: "5th st")
 Event.create(name: "reading", time: "12:30 AM", address: "1910 Winter st", date: "Fri Mar 22 2019 00:00:00 GMT-0500 (Central Daylight Time)", notes: "A good book")
 
-ClickedDayNote.create(day: one.date, notes: "Working")
-ClickedDayNote.create(day: two.date, notes: "29th")
-ClickedDayNote.create(day: three.date, notes: "30th")
+ClickedDayNote.create(day: one.date, notes: "about to work!")
+ClickedDayNote.create(day: two.date, notes: "trying to work")
+ClickedDayNote.create(day: three.date, notes: "DEFINATLY WORKING!")
 
 computer = InventoryItem.create(name: "DeskTop Computer")
 InventoryItem.create(name: "Desk")

@@ -3,8 +3,8 @@ const INIT_STATE = {
   fetched: false,
   error: null,
   events: [],
-  addEventForm: false,
-  clickedDay: `${new Date()}`
+  addEventForm: true,
+  clickedDay: `${new Date(new Date().setHours(0, 0, 0, 0))}`
 };
 
 const Events = (state = INIT_STATE, action) => {
@@ -30,9 +30,9 @@ const Events = (state = INIT_STATE, action) => {
         error: action.payload
       };
     }
-    case "ADD_EVENT_FORM": {
-      return { ...state, addEventForm: true };
-    }
+    // case "ADD_EVENT_FORM": {
+    //   return { ...state, addEventForm: true };
+    // }
     case "POST_EVENT": {
       return { ...state, events: [...state.events, action.payload] };
     }

@@ -1,5 +1,5 @@
-export function addEventForm() {
-  return {
-    type: "ADD_EVENT_FORM"
-  };
-}
+// export function addEventForm() {
+//   return {
+//     type: "ADD_EVENT_FORM"
+//   };
+// }

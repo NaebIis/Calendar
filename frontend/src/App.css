@@ -203,7 +203,7 @@ main {
 
 .calendar .days {
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 700;
   color: var(--text-color-light);
   font-size: 70%;
   padding: 0.75em 0;
@@ -262,7 +262,7 @@ main {
   line-height: 1;
   color: var(--main-color);
   opacity: 0;
-  font-size: 8em;
+  font-size: 11em;
   position: absolute;
   top: -0.2em;
   right: -0.05em;
