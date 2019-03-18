@@ -4,7 +4,7 @@ const INIT_STATE = {
   error: null,
   notes: [],
   clickedDayNotes: "",
-  clickedDayNoteId: ""
+  clickedDayNoteId: ''
 };
 
 const ClickedDayNotes = (state = INIT_STATE, action) => {

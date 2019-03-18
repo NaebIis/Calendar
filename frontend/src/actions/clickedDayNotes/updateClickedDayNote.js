@@ -1,8 +1,20 @@
 export function updateClickedDayNote(newNotes) {
-  return dispatch => {
-    dispatch({
-      type: "NEW_CLICKED_DAY_NOTE",
-      payload: newNotes
-    });
-  };
+  console.log(newNotes)
+  if (newNotes) {
+    return dispatch => {
+      dispatch({
+        type: "NEW_CLICKED_DAY_NOTE",
+        payload: newNotes
+      });
+    };
+  }
+  else if (!newNotes) {
+    return dispatch => {
+      dispatch({
+        type: "NEW_CLICKED_DAY_NOTE",
+        payload: ""
+      });
+    };
+  }
 }
+

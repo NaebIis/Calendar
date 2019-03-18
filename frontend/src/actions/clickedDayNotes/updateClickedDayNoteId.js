@@ -1,5 +1,5 @@
-export function updateClickedDayNoteId(newNoteId) {
-  console.log(newNoteId);
+
+export function updateClickedDayNoteId(allNotes, newNoteId) {
   return dispatch => {
     dispatch({
       type: "NEW_CLICKED_DAY_NOTE_ID",
@@ -7,3 +7,4 @@ export function updateClickedDayNoteId(newNoteId) {
     });
   };
 }
+

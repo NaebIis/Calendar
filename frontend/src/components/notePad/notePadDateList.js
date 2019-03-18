@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { clickedDay } from "../../actions/events/clickedDay";
 import { updateClickedDayNote } from "../../actions/clickedDayNotes/updateClickedDayNote";
 import { updateClickedDayNoteId } from "../../actions/clickedDayNotes/updateClickedDayNoteId";
-
+import { deleteDayNote } from "../../actions/clickedDayNotes/deleteDayNote"
 // import ContextMenu from "react-context-menu";
 
 const mapStateToProps = state => {
@@ -17,13 +17,15 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    deleteNote: id => dispatch(deleteDayNote(id)),
     text: newNote => dispatch(updateClickedDayNote(newNote)),
-    textId: newNoteId => dispatch(updateClickedDayNoteId(newNoteId)),
+    textId: (allNoteIds, newNoteId) => dispatch(updateClickedDayNoteId(allNoteIds, newNoteId)),
     onClickedDay: day => dispatch(clickedDay(day))
   };
 };
 // {this.props.date.getMonth()}
 class NotePadDateList extends React.Component {
+
   renderEvent = () => {
     return (
       <li
@@ -31,11 +33,15 @@ class NotePadDateList extends React.Component {
         className="dateListItem"
         onClick={() => {
           this.props.onClickedDay(this.props.note.day);
+          this.props.textId(this.props.notes, this.props.note.id);
+
           this.props.text(this.props.note.notes);
-          this.props.textId(this.props.note.id);
         }}
       >
         {this.props.note.day.slice(0, 11)}
+        <button onClick={() => {
+          this.props.deleteNote(this.props.note.id)
+        }}>x</button>
       </li>
     );
   };
@@ -49,3 +55,6 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(NotePadDateList);
+
+
+

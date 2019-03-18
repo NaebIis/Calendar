@@ -11,7 +11,7 @@ import { updateClickedDayNoteId } from "../../actions/clickedDayNotes/updateClic
 const mapDispatchToProps = dispatch => {
   return {
     newTextState: newNotes => dispatch(updateClickedDayNote(newNotes)),
-    newTextStateId: newNoteId => dispatch(updateClickedDayNoteId(newNoteId)),
+    newTextStateId: (allNoteIds, newNoteId) => dispatch(updateClickedDayNoteId(allNoteIds, newNoteId)),
     editClickedDayNotes: (event, id) => dispatch(editNotes(event, id)),
     postClickedDayNote: day => dispatch(postClickedDayNote(day))
   };
@@ -34,12 +34,14 @@ class NotePad extends React.Component {
   }
 
   displayedNote = () => {
+    console.log(this.props.notes)
     let clickedDayNote = this.props.notes.find(note => {
       return note.day === `${this.props.clickedDay}`;
     });
     if (clickedDayNote) {
+      console.log(clickedDayNote)
       this.props.newTextState(clickedDayNote.notes);
-      this.props.newTextStateId(clickedDayNote.id);
+      this.props.newTextStateId(this.props.notes, clickedDayNote.id);
     } else if (!clickedDayNote) {
       this.props.postClickedDayNote(`${this.props.clickedDay}`);
       setTimeout(getClickedDayNotes(), 100);
@@ -47,6 +49,7 @@ class NotePad extends React.Component {
   };
 
   render() {
+    console.log(this.props.notes)
     let temp = this.props.notes.sort(function (a, b) {
       return new Date(b.day) - new Date(a.day);
     });

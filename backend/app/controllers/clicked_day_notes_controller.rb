@@ -42,6 +42,8 @@ class ClickedDayNotesController < ApplicationController
 
   # DELETE /clicked_day_notes/1
   def destroy
+    @clicked_day_note = ClickedDayNote.find(params[:id]) 
+    
     @clicked_day_note.destroy
   end
 
