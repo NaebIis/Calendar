@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_01_04_212440) do
 
   create_table "clicked_day_notes", force: :cascade do |t|
     t.string "day"
-    t.string "notes"
+    t.string "notes", default: "empty"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
