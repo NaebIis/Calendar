@@ -39,7 +39,7 @@ const mapDispatchToProps = dispatch => {
 class InventoryHome extends React.Component {
   render() {
     return (
-      <div>
+      <div Class="thing">
         <div className="itemCategoryName">
           <nav role="navigation">
             <ul>

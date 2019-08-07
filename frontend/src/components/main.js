@@ -7,7 +7,7 @@ import InventoryHome from "./inventory/inventoryHome";
 import ContactsHome from "./contacts/contactsHome";
 
 const Main = () => (
-  <main>
+  <main className="testing">
     <header className="mainHeader">
       <h1 id="App-Name">Edges Calendar</h1>
     </header>

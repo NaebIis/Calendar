@@ -74,7 +74,7 @@
   --border-color: #4e515531;
   --bg-color: #89adf19f;
   --neutral-color: #fff;
-  --theme-color: rgb(109, 103, 103);
+  --theme-color: rgb(199, 197, 197);
 }
 
 /* GENERAL */
@@ -84,14 +84,13 @@
 }
 
 body {
-  top: 80px;
+  position: absolute;
   /* font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif; */
   font-size: 1em;
   font-weight: 300;
   line-height: 1.5;
   color: var(--text-color);
-  background: rgb(158, 156, 156);
-  /* position: absolute; */
+  background: var(--neutral-color);
 }
 
 header {
@@ -167,7 +166,7 @@ main {
 
 .calendar {
   display: block;
-  position: absolute;
+  position: fixed;
   left: 150px;
   width: 1050px;
   background: var(--neutral-color);
@@ -303,12 +302,11 @@ h5 {
 }
 /* ------------------------------------------- */
 #sidebar {
-  position: absolute;
+  position: fixed;
   width: 150px;
   height: 100%;
   top: 80px;
   background: var(--theme-color);
-  /* left: -190px; */
 }
 
 #sidebar.active {
@@ -317,16 +315,15 @@ h5 {
 }
 
 #sidebar ul li {
-  color: rgb(92, 29, 29);
   padding: 15px;
-  border-bottom: 2px solid rgb(148, 142, 142);
+  border-bottom: 1px solid rgb(148, 142, 142);
   border-right: 2px solid rgb(148, 142, 142);
   border-left: 2px solid rgb(148, 142, 142);
   border-top: 2px solid rgb(148, 142, 142);
 }
 
 #sidebar li:hover {
-  background: rgb(175, 0, 96);
+  background: rgb(109, 108, 109);
   cursor: pointer;
   text-decoration: none;
   transition-duration: 0.5s;
@@ -359,8 +356,7 @@ h5 {
 /* ----------------------------------- */
 .addEvent-form {
   position: absolute;
-  right: 10px;
-  top: 85px;
+  left: 1210px;
   border: 5px solid white;
   -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1),
     0 0 16px rgba(0, 0, 0, 0.1);
@@ -372,8 +368,8 @@ h5 {
 }
 
 #home {
-  position: flex;
-  left: 250px;
+  position: relative;
+  left: 180px;
 }
 
 .mainHeader {
@@ -396,10 +392,16 @@ h5 {
   top: 17px;
 }
 /* --------------------------------------------------------- */
-
+.notePadContainer {
+  position: relative;
+  left: 160px;
+}
+.currentDay {
+  position: relative;
+  left: 280px;
+}
 .notePad {
-  top: 115px;
-  left: 300px;
+  left: 160px;
   position: absolute;
   font-weight: bold;
   border: 3px solid white;
@@ -414,6 +416,7 @@ h5 {
 
 .today {
   position: absolute;
+  width: 220px;
   left: 0px;
   top: 150px;
   font-weight: bold;
@@ -427,11 +430,26 @@ h5 {
   background: rgba(255, 255, 255, 0.5);
   margin: 0 0 10px 0;
 }
+.today:hover button {
+  display: block;
+}
+
+.calEventList {
+  -webkit-transition: padding 0.2s;
+  border-radius: 2px;
+}
+
+.calEventList:hover {
+  padding: 9px;
+  border-radius: 4px;
+
+  -webkit-transition: border-radius 2s;
+}
 
 .todaysNotePad {
   position: absolute;
-  left: 700px;
-  top: 85px;
+  width: 220px;
+  left: 500px;
   font-weight: bold;
   padding: 5px;
   border: 3px solid white;
@@ -444,10 +462,11 @@ h5 {
   margin: 0 0 10px 0;
 }
 
+.todaysNotePad:hover button {
+  display: block;
+}
+
 .NotePadDateList {
-  position: absolute;
-  left: 150px;
-  top: 115px;
   font-weight: bold;
   border: 3px solid white;
   -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1),
@@ -472,6 +491,14 @@ h5 {
   -webkit-transition: border-radius 2s;
 }
 
+.dateListItem:hover button {
+  display: block;
+}
+
+button {
+  display: none;
+}
+
 nav ul {
   height: 500px;
   width: 100%;
@@ -480,16 +507,23 @@ nav ul {
   overflow: hidden;
   overflow-y: scroll;
 }
-/* -------------------------------------------------- */
+
+/* -------------------------------------------------- *//* -------------------------------------------------- */
+
+#dropdown {
+  z-index: 1;
+}
+.itemCategoryName {
+  height: 65px;
+  z-index: -1;
+}
+
 .itemCategoryName a {
   text-decoration: none;
 }
 
 .itemCategoryName nav {
-  width: 1000;
-  position: fixed;
-  left: 193px;
-  top: 80px;
+  width: 1000px;
   font-family: monospace;
 }
 
@@ -550,24 +584,8 @@ nav ul {
 .categoryItemsList {
   width: 189px;
   position: fixed;
-  left: 1020px;
+  left: 700px;
   top: 150px;
-  font-weight: bold;
-  padding: 5px;
-  border: 3px solid white;
-  -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1),
-    0 0 16px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.5);
-  margin: 0 0 10px 0;
-}
-
-.createNewItem {
-  position: fixed;
-  left: 650px;
-  top: 284px;
   font-weight: bold;
   padding: 5px;
   border: 3px solid white;
@@ -604,7 +622,7 @@ nav ul {
   position: relative;
   text-decoration: none;
   transition-duration: 0.5s;
-  z-index: 10;
+  z-index: 0;
 }
 
 .createNewItemCatSelect li a {
@@ -639,6 +657,7 @@ nav ul {
 .createNewItemCatSelect ul li ul li {
   clear: both;
   width: 100%;
+  z-index: 1;
 }
 
 #addItemForm {
@@ -647,7 +666,7 @@ nav ul {
 #addItemFormCreateButton {
   position: absolute;
   top: 175px;
-  z-index: 1;
+  z-index: 0;
 }
 
 /* --------------------------------------------------- */
@@ -672,10 +691,15 @@ nav ul {
 
 /* --------------------------------------------------- */
 
+.thing {
+  position: relative;
+  left: 160px;
+}
+
 #createNewPartyEvent {
-  position: flex;
-  left: 650px;
-  top: 150px;
+  position: relative;
+  left: 200px;
+  top: -545px;
   font-weight: bold;
   padding: 5px;
   border: 3px solid white;
@@ -689,10 +713,8 @@ nav ul {
 }
 
 .selectedPartyEventList {
+  position: relative;
   width: 189px;
-  position: flex;
-  left: 1220px;
-  top: 150px;
   font-weight: bold;
   padding: 5px;
   border: 3px solid white;
@@ -705,11 +727,26 @@ nav ul {
   margin: 0 0 10px 0;
 }
 
+.createNewItem {
+  position: relative;
+  left: 200px;
+  top: -545px;
+  font-weight: bold;
+  border: 3px solid white;
+  -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1),
+    0 0 16px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 0 0 10px 0;
+}
+/* ------------------------------------------------------------------------------ */
 .contactNames {
+  position: relative;
   width: 189px;
-  position: flex;
-  left: 300px;
-  top: 150px;
+  /* left: 300px; */
+  /* top: 150px; */
   font-weight: bold;
   padding: 5px;
   border: 3px solid white;

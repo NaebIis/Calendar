@@ -15,8 +15,8 @@ export function deleteDayNote(id) {
             .catch(error => error)
             .then(resp => {
                 dispatch({
-                    type: "POST_CLICKED_DAY_NOTES",
-                    payload: resp
+                    type: "UPDATE_CLICKED_DATE_NOTES_AFTER_DELETE",
+                    payload: temp
                 });
             });
     };

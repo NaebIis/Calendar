@@ -42,6 +42,15 @@ const ClickedDayNotes = (state = INIT_STATE, action) => {
       });
       return { ...state, notes: temp };
     }
+    case "UPDATE_CLICKED_DATE_NOTES_AFTER_DELETE": {
+      let temp = []
+      state.notes.map(note => {
+        if (note.id != action.payload.id) {
+          temp.push(note)
+        }
+      })
+      return { ...state, notes: temp }
+    };
     case "POST_CLICKED_DAY_NOTES": {
       return { ...state, notes: [...state.notes, action.payload] };
     }
@@ -57,3 +66,4 @@ const ClickedDayNotes = (state = INIT_STATE, action) => {
 };
 
 export default ClickedDayNotes;
+

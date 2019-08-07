@@ -23,10 +23,10 @@ const mapDispatchToProps = dispatch => {
     onClickedDay: day => dispatch(clickedDay(day))
   };
 };
-// {this.props.date.getMonth()}
-class NotePadDateList extends React.Component {
 
+class NotePadDateList extends React.Component {
   renderEvent = () => {
+    let date = this.props.note.day === undefined ? "broken" : this.props.note.day.slice(0, 11)
     return (
       <li
         id={this.props.note.id}
@@ -38,8 +38,8 @@ class NotePadDateList extends React.Component {
           this.props.text(this.props.note.notes);
         }}
       >
-        {this.props.note.day.slice(0, 11)}
-        <button onClick={() => {
+        {date}
+        <button className="xButton" onClick={() => {
           this.props.deleteNote(this.props.note.id)
         }}>x</button>
       </li>

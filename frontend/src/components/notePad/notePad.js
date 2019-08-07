@@ -45,6 +45,7 @@ class NotePad extends React.Component {
     } else if (!clickedDayNote) {
       this.props.postClickedDayNote(`${this.props.clickedDay}`);
       setTimeout(getClickedDayNotes(), 100);
+      clickedDayNote = this.props.notes[Math.floor(Math.random() * this.props.notes.length)]
     }
   };
 
@@ -54,8 +55,8 @@ class NotePad extends React.Component {
       return new Date(b.day) - new Date(a.day);
     });
     return (
-      <div>
-        <h2 class="currentDay">{this.props.clickedDay.slice(0, 11)}</h2>
+      <div className="notePadContainer">
+        <p className="currentDay">{this.props.clickedDay.slice(0, 11)}</p>
         <div className="notePad">
           <textarea
             rows="40"
@@ -68,11 +69,15 @@ class NotePad extends React.Component {
           />
         </div>
         <div className="todaysNotePad">
-          {this.props.events.events.map(event => {
-            if (event.date === `${this.props.clickedDay}`) {
-              return <EventSidebar key={event.id} event={event} />;
-            }
-          })}
+          <nav>
+            <ul>
+              {this.props.events.events.map(event => {
+                if (event.date === `${this.props.clickedDay}`) {
+                  return <EventSidebar key={event.id} event={event} />;
+                }
+              })}
+            </ul>
+          </nav>
         </div>
         <div className="NotePadDateList">
           <nav>
