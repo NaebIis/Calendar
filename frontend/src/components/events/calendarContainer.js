@@ -80,6 +80,12 @@ class Calendar extends React.Component {
     let day = startDate;
     let formattedDate = "";
 
+    let testing = () => {
+      this.props.events.events.map(event => {
+        return <Event day={day} key={event.id} event={event} />;
+      })
+    }
+
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate = dateFns.format(day, dateFormat);
@@ -104,9 +110,7 @@ class Calendar extends React.Component {
             <span className="bg">{formattedDate}</span>
             <div className="con">
               <br />
-              {this.props.events.events.map(event => {
-                return <Event day={day} key={event.id} event={event} />;
-              })}
+              {testing()}
             </div>
           </div>
         );

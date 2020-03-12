@@ -34,12 +34,10 @@ class NotePad extends React.Component {
   }
 
   displayedNote = () => {
-    console.log(this.props.notes)
     let clickedDayNote = this.props.notes.find(note => {
       return note.day === `${this.props.clickedDay}`;
     });
     if (clickedDayNote) {
-      console.log(clickedDayNote)
       this.props.newTextState(clickedDayNote.notes);
       this.props.newTextStateId(this.props.notes, clickedDayNote.id);
     } else if (!clickedDayNote) {
@@ -50,7 +48,6 @@ class NotePad extends React.Component {
   };
 
   render() {
-    console.log(this.props.notes)
     let temp = this.props.notes.sort(function (a, b) {
       return new Date(b.day) - new Date(a.day);
     });

@@ -1,5 +1,4 @@
 export function updateClickedDayNote(newNotes) {
-  console.log(newNotes)
   if (newNotes) {
     return dispatch => {
       dispatch({

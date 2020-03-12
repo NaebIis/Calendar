@@ -34,7 +34,6 @@ class NotePadDateList extends React.Component {
         onClick={() => {
           this.props.onClickedDay(this.props.note.day);
           this.props.textId(this.props.notes, this.props.note.id);
-
           this.props.text(this.props.note.notes);
         }}
       >

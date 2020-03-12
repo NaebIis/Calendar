@@ -30,6 +30,7 @@ export const getClickedDayNotes = () => {
     payload: fetch(`${URL}/clicked_day_notes`).then(resp => resp.json())
   });
 };
+
 export const getInventoryItems = () => {
   store.dispatch({
     type: "INVENTORY_ITEMS",
