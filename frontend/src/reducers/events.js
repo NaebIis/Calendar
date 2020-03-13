@@ -38,7 +38,7 @@ const Events = (state = INIT_STATE, action) => {
     }
     case "UPDATE_EVENTS_NOTES": {
       const temp = [];
-      state.events.map(thing => {
+      state.events.forEach(thing => {
         if (thing.id === action.payload.id) {
           thing.notes = action.payload.notes;
           temp.push(thing);

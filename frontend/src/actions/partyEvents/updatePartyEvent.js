@@ -6,8 +6,8 @@ export default function updatePartyEvent(newPartyEventId) {
   let clickedPartyEventItems = [];
   let join = store.getState().partEventItemJoins.partEventItemJoins;
 
-  allItems.map(item => {
-    join.map(join => {
+  allItems.forEach(item => {
+    join.forEach(join => {
       if (join.partyEvent_id === id && join.item_id === item.id) {
         return clickedPartyEventItems.push(item);
       }

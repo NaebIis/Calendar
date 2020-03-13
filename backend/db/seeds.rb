@@ -14,11 +14,11 @@ PartyEvent.destroy_all
 PartyEventItemJoin.destroy_all
 Contact.destroy_all
 
-one = Event.create(name: "Pick flowers", time: "13:30 AM", address: "1910 Winter st", date: "Sat Mar 23 2019 00:00:00 GMT-0500 (Central Daylight Time)", notes: "red, blue, green")
-two = Event.create(name: "cooking", time: "11:30 AM", address: "1910 Winter st", date: "Tue Mar 19 2019 00:00:00 GMT-0500 (Central Daylight Time)", notes: "gumbo")
-three = Event.create(name: "setting up", time: "12:30 AM", address: "1910 Winter st", date: "Wed Mar 20 2019 00:00:00 GMT-0500 (Central Daylight Time)", notes: "wedding")
-Event.create(name: "walking the dog", time: "1:30 AM", address: "1910 Winter st", date: "Thu Mar 21 2019 00:00:00 GMT-0500 (Central Daylight Time)", notes: "5th st")
-Event.create(name: "reading", time: "12:30 AM", address: "1910 Winter st", date: "Fri Mar 22 2019 00:00:00 GMT-0500 (Central Daylight Time)", notes: "A good book")
+one = Event.create(name: "Pick flowers", time: "13:30 AM", address: "1910 Winter st", date: "Mon Mar 23 2020 00:00:00 GMT-0500 (Central Daylight Time)", notes: "red, blue, green")
+two = Event.create(name: "cooking", time: "11:30 AM", address: "1910 Winter st", date: "Tue Mar 24 2020 00:00:00 GMT-0500 (Central Daylight Time)", notes: "gumbo")
+three = Event.create(name: "setting up", time: "12:30 AM", address: "1910 Winter st", date: "Wed Mar 25 2020 00:00:00 GMT-0500 (Central Daylight Time)", notes: "wedding")
+Event.create(name: "walking the dog", time: "1:30 AM", address: "1910 Winter st", date: "Thu Mar 26 2020 00:00:00 GMT-0500 (Central Daylight Time)", notes: "5th st")
+Event.create(name: "reading", time: "12:30 AM", address: "1910 Winter st", date: "Fri Mar 27 2020 00:00:00 GMT-0500 (Central Daylight Time)", notes: "A good book")
 
 ClickedDayNote.create(day: one.date, notes: "about to work!")
 ClickedDayNote.create(day: two.date, notes: "trying to work")

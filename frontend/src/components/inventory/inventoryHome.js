@@ -86,7 +86,7 @@ class InventoryHome extends React.Component {
           </nav>
         </div>
         <div className="categoryItemsList">
-          {this.props.allItemCategories.map(category => {
+          {this.props.allItemCategories.forEach(category => {
             if (category.id === this.props.clickedCategory) {
               return <h3>{category.name}</h3>;
             }
@@ -115,7 +115,7 @@ class InventoryHome extends React.Component {
         </div>
         {/*  */}
         <div className="selectedPartyEventList">
-          {this.props.allpartyEvents.map(partyEvent => {
+          {this.props.allpartyEvents.forEach(partyEvent => {
             if (partyEvent.id === this.props.clickedPartyEventName) {
               return <h3>{partyEvent.name}</h3>;
             }
@@ -166,7 +166,7 @@ class InventoryHome extends React.Component {
             </label>
             <br />
             <lable>Selected Category:</lable>
-            <h4 name="category" id={this.props.newItemCategoryId} />
+            <h4 name="category" id={this.props.newItemCategoryId}>Categories</h4>
             <div className="createNewItemCatSelect">
               <nav role="navigation">
                 <ul>

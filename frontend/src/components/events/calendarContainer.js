@@ -28,6 +28,12 @@ class Calendar extends React.Component {
     currentMonth: new Date(),
     selectedDate: new Date()
   };
+  
+  testing(input, day) {
+    return input.map(event => {
+      return <Event day={day} key={event.id} event={event} />;
+    })
+  }
 
   renderHeader() {
     const dateFormat = "MMMM YYYY";
@@ -80,12 +86,6 @@ class Calendar extends React.Component {
     let day = startDate;
     let formattedDate = "";
 
-    let testing = () => {
-      this.props.events.events.map(event => {
-        return <Event day={day} key={event.id} event={event} />;
-      })
-    }
-
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate = dateFns.format(day, dateFormat);
@@ -110,7 +110,7 @@ class Calendar extends React.Component {
             <span className="bg">{formattedDate}</span>
             <div className="con">
               <br />
-              {testing()}
+              {this.testing(this.props.events.events, day)}
             </div>
           </div>
         );
@@ -200,10 +200,8 @@ class Calendar extends React.Component {
               <div className="today">
                 <nav>
                   <ul>
-                    {this.props.events.events.map(event => {
-                      if (event.date === `${this.props.clickedDay}`) {
-                        return <EventSidebar key={event.id} event={event} />
-                      }
+                    {this.props.events.events.map(event => { 
+                      return event.date === `${this.props.clickedDay}` ? <EventSidebar key={event.id} event={event} /> : console.log('Broken');
                     })}
                   </ul>
                 </nav>

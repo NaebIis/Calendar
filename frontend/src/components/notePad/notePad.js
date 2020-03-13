@@ -68,7 +68,7 @@ class NotePad extends React.Component {
         <div className="todaysNotePad">
           <nav>
             <ul>
-              {this.props.events.events.map(event => {
+              {this.props.events.events.forEach(event => {
                 if (event.date === `${this.props.clickedDay}`) {
                   return <EventSidebar key={event.id} event={event} />;
                 }

@@ -31,26 +31,26 @@ const ClickedDayNotes = (state = INIT_STATE, action) => {
       };
     }
     case "UPDATE_CLICKED_DAY_NOTES": {
-      const temp = [];
-      state.notes.map(clickedDayNote => {
+      const updatedClickedDayNotes = [];
+      state.notes.forEach(clickedDayNote => {
         if (clickedDayNote.id === action.payload.id) {
           clickedDayNote.notes = action.payload.notes;
-          temp.push(clickedDayNote);
+          updatedClickedDayNotes.push(clickedDayNote);
         } else {
-          temp.push(clickedDayNote);
+          updatedClickedDayNotes.push(clickedDayNote);
         }
       });
-      return { ...state, notes: temp };
+      return { ...state, notes: updatedClickedDayNotes };
     }
     case "UPDATE_CLICKED_DATE_NOTES_AFTER_DELETE": {
       let temp = []
-      state.notes.map(note => {
-        if (note.id != action.payload.id) {
+      state.notes.forEach(note => {
+        if (note.id !== action.payload.id) {
           temp.push(note)
         }
       })
       return { ...state, notes: temp }
-    };
+    }
     case "POST_CLICKED_DAY_NOTES": {
       return { ...state, notes: [...state.notes, action.payload] };
     }
