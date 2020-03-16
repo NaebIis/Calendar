@@ -5,12 +5,14 @@ import Event from "./event";
 // import { addEventForm } from "../../actions/events/addEventForm";
 import { postEvent } from "../../actions/events/postEvent";
 import { clickedDay } from "../../actions/events/clickedDay";
-import EventSidebar from "../events/eventSidebar";
+// import AddEventForm from "./calendarSideBar";
+import CalendarSideBar from "./calendarSideBar";
+// import EventSidebar from "./eventSidebar";
 
 const mapStateToProps = state => {
   return {
     events: state.events,
-    addEvent: state.events.addEventForm,
+    // addEvent: state.events.addEventForm,
     clickedDay: state.events.clickedDay
   };
 };
@@ -152,24 +154,7 @@ class Calendar extends React.Component {
     this.props.onClickedDay(day);
   };
 
-  onSubmitHandler = event => {
-    let form = event.target.parentElement;
-    let obj = {
-      name: form.name.value,
-      time: form.time.value,
-      address: form.address.value,
-      date: this.props.clickedDay,
-      notes: form.notes.value
-    };
-    form.name.value = "";
-    form.time.value = "";
-    form.address.value = "";
-    form.notes.value = "";
-    this.props.postEvent(obj);
-  };
-
   render() {
-    // console.log(this.state.selectedDate);
     return (
       <div>
         <div className="calendar">
@@ -177,38 +162,7 @@ class Calendar extends React.Component {
           {this.renderDays()}
           {this.renderCells()}
         </div>
-        <div className="addEvent-form">
-          {this.props.addEvent ? (
-            <div>
-              <form>
-                <label>Name:</label>
-                <input type="text" name="name" />
-                <br />
-                <label>Time:</label>
-                <input type="text" name="time" />
-                <br />
-                <label>Address:</label>
-                <input type="text" name="address" />
-                <br />
-                <input type="text" name="notes" />
-                <input
-                  type="button"
-                  value="Submit"
-                  onClick={this.onSubmitHandler}
-                />
-              </form>
-              <div className="today">
-                <nav>
-                  <ul>
-                    {this.props.events.events.map(event => { 
-                      return event.date === `${this.props.clickedDay}` ? <EventSidebar key={event.id} event={event} /> : console.log('Broken');
-                    })}
-                  </ul>
-                </nav>
-              </div>
-            </div>
-          ) : null}
-        </div>
+        {<CalendarSideBar />}
       </div>
     );
   }

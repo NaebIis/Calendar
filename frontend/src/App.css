@@ -4,7 +4,7 @@
 
 #App-Name {
   font-weight: 1000;
-  color: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.507);
   position: absolute;
   left: 50px;
   top: 10px;
@@ -26,7 +26,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: rgb(109, 101, 101);
+  color: rgb(101, 108, 109);
 }
 
 .App-link {
@@ -66,15 +66,17 @@
 }
 
 /* VARIABLES */
-
+h2{
+  text-align: center;
+}
 :root {
   --main-color: #1a8fff;
   --text-color: rgb(119, 119, 119);
   --text-color-light: rgb(204, 204, 204);
   --border-color: #4e515531;
-  --bg-color: #89adf19f;
+  --bg-color: #266beb9f;
   --neutral-color: #fff;
-  --theme-color: rgb(199, 197, 197);
+  --theme-color: rgb(52, 152, 209);
 }
 
 /* GENERAL */
@@ -354,18 +356,6 @@ h5 {
   width: 100%;
 }
 /* ----------------------------------- */
-.addEvent-form {
-  position: absolute;
-  left: 1210px;
-  border: 5px solid white;
-  -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1),
-    0 0 16px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.5);
-  margin: 0 0 10px 0;
-}
 
 #home {
   position: relative;
@@ -378,7 +368,8 @@ h5 {
   height: 80px;
   top: 0px;
   width: 100%;
-  background-image: linear-gradient(#4e4c4c, var(--theme-color));
+  background-image: linear-gradient(#7acdfd, var(--theme-color));
+  border-bottom: rgb(163, 156, 156);;
 }
 
 .Login-btn {
@@ -393,18 +384,22 @@ h5 {
 }
 /* --------------------------------------------------------- */
 .notePadContainer {
-  position: relative;
-  left: 160px;
+  width: 100%;
+  
 }
 .currentDay {
   position: relative;
   left: 280px;
 }
 .notePad {
-  left: 160px;
+  left: 300px;
+  width: 325px;
+  height: 550px;
   position: absolute;
   font-weight: bold;
-  border: 3px solid white;
+  border-right: 3px solid white;
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
   -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1),
     0 0 16px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
@@ -414,61 +409,35 @@ h5 {
   margin: 0 0 10px 0;
 }
 
-.today {
-  position: absolute;
-  width: 220px;
-  left: 0px;
-  top: 150px;
-  font-weight: bold;
-  padding: 5px;
-  border: 3px solid white;
-  -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1),
-    0 0 16px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.5);
-  margin: 0 0 10px 0;
-}
-.today:hover button {
-  display: block;
-}
-
-.calEventList {
-  -webkit-transition: padding 0.2s;
-  border-radius: 2px;
-}
-
-.calEventList:hover {
-  padding: 9px;
-  border-radius: 4px;
-
-  -webkit-transition: border-radius 2s;
-}
-
 .todaysNotePad {
-  position: absolute;
-  width: 220px;
-  left: 500px;
-  font-weight: bold;
-  padding: 5px;
-  border: 3px solid white;
-  -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1),
-    0 0 16px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
+  font-weight: 1000;
+  color: rgba(0, 0, 0, 0.616);
+  position: fixed;
+  width: 240px;
+  height: 100%;
+  top: 80px;
+  right: 0px;
+  background: var(--theme-color);
+  border-left: 1px solid rgb(163, 156, 156);
+  border-top: 1px solid rgb(163, 156, 156);
+  border-bottom: 1px solid rgb(163, 156, 156);
   padding: 15px;
-  background: rgba(255, 255, 255, 0.5);
-  margin: 0 0 10px 0;
 }
 
-.todaysNotePad:hover button {
+
+.todaysNotePad li:hover button{
   display: block;
 }
+
 
 .NotePadDateList {
+  width: 150px;
+  left: 150px;
+  position: absolute;
   font-weight: bold;
-  border: 3px solid white;
+  border-left: 3px solid white;
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
   -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1),
     0 0 16px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
@@ -479,7 +448,7 @@ h5 {
 }
 
 .dateListItem {
-  -webkit-transition: padding 0.2s;
+  /* -webkit-transition: padding 0.2s; */
   border-radius: 2px;
 }
 
@@ -488,7 +457,7 @@ h5 {
   border-radius: 4px;
 
   /* HOVER ON */
-  -webkit-transition: border-radius 2s;
+  /* -webkit-transition: border-radius 2s; */
 }
 
 .dateListItem:hover button {
@@ -758,3 +727,54 @@ nav ul {
   background: rgba(255, 255, 255, 0.5);
   margin: 0 0 10px 0;
 }
+
+/* ----------------------------------------------------- */
+
+.EventSidebar {
+  font-weight: 1000;
+  color: rgba(0, 0, 0, 0.507);
+  position: fixed;
+  width: 240px;
+  height: 100%;
+  top: 80px;
+  right: 0px;
+  background: var(--theme-color);
+  border-left: 3px solid rgb(163, 156, 156);
+}
+
+/* ----------------- */
+
+.addEvent-form {
+  padding: 15px;
+  border-bottom: 3px solid whitesmoke
+}
+
+/* ----------------- */
+
+.today {
+  padding: 15px;
+  top: 150px;
+  border-bottom: 3px solid whitesmoke
+}
+
+.today:hover button {
+  display: block;
+}
+
+.calSideBarEvent {
+  border-bottom: 1px solid white
+  /* -webkit-transition: padding 0.2s;
+  border-radius: 2px;
+  padding: 9px;
+  border-radius: 4px;
+
+  -webkit-transition: border-radius 2s; */
+}
+.calSideBarEvent h4 {
+  color: rgba(0, 0, 0, 0.534);
+}
+
+/* ----------------- */
+
+/* ----------------------------------------------------- */
+

@@ -6,11 +6,11 @@ class Event extends React.Component {
       new Date(this.props.event.date).getTime() === this.props.day.getTime()
     ) {
       return (
-        <div>
+        // <div>
           <h5>
             {this.props.event.name} {this.props.event.time}
           </h5>
-        </div>
+        // {/* </div> */}
       );
     } else if (
       new Date(this.props.event.date).getTime() !== this.props.day.getTime()

@@ -52,44 +52,47 @@ class NotePad extends React.Component {
       return new Date(b.day) - new Date(a.day);
     });
     return (
-      <div className="notePadContainer">
-        <p className="currentDay">{this.props.clickedDay.slice(0, 11)}</p>
-        <div className="notePad">
-          <textarea
-            rows="40"
-            cols="45"
-            onChange={event => {
-              this.props.editClickedDayNotes(event, this.props.textId);
-              this.props.newTextState(event.target.value);
-            }}
-            value={this.props.text}
-          />
-        </div>
-        <div className="todaysNotePad">
-          <nav>
-            <ul>
-              {this.props.events.events.forEach(event => {
-                if (event.date === `${this.props.clickedDay}`) {
-                  return <EventSidebar key={event.id} event={event} />;
-                }
-              })}
-            </ul>
-          </nav>
-        </div>
-        <div className="NotePadDateList">
-          <nav>
-            <ul>
-              {temp.reverse().map(note => {
-                return (
-                  <NotePadDateList
-                    date={new Date()}
-                    key={note.id}
-                    note={note}
-                  />
-                );
-              })}
-            </ul>
-          </nav>
+      <div>
+        <h2 className="currentDay">{this.props.clickedDay.slice(0, 11)}</h2>
+        <div className="notePadContainer">
+          <div className="notePad">
+            <textarea
+              rows="40"
+              cols="45"
+              onChange={event => {
+                this.props.editClickedDayNotes(event, this.props.textId);
+                this.props.newTextState(event.target.value);
+                console.log(event, this.props.textId)
+              }}
+              value={this.props.text}
+            />
+          </div>
+          <div className="NotePadDateList">
+            <nav>
+              <ul>
+                {temp.reverse().map(note => {
+                  return (
+                    <NotePadDateList
+                      date={new Date()}
+                      key={note.id}
+                      note={note}
+                    />
+                  );
+                })}
+              </ul>
+            </nav>
+          </div>
+          <div className="todaysNotePad">
+            <nav>
+              <ul>
+                {this.props.events.events.map(event => {
+                  if (event.date === `${this.props.clickedDay}`) {
+                    return <EventSidebar key={event.id} event={event} />;
+                  }
+                })}
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     );

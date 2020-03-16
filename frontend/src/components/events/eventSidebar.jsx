@@ -21,17 +21,17 @@ const mapStateToProps = state => {
 class EventSidebar extends React.Component {
   renderEvent = () => {
     return (
-      <li className="calEventList">
+      <li className="calSideBarEvent">
         <h4>
           {this.props.event.name} {this.props.event.time}{" "}
-          <button onClick={() => this.props.deleteEvent(this.props.event.id)}>
-            Delete event
-          </button>
         </h4>
         <input
           defaultValue={this.props.event.notes}
           onChange={event => this.props.updateNotes(event, this.props.event.id)}
         />
+        <button onClick={() => this.props.deleteEvent(this.props.event.id)}>
+          Delete event
+          </button>
       </li>
     );
   };
