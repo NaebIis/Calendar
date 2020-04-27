@@ -62,7 +62,6 @@ class NotePad extends React.Component {
               onChange={event => {
                 this.props.editClickedDayNotes(event, this.props.textId);
                 this.props.newTextState(event.target.value);
-                console.log(event, this.props.textId)
               }}
               value={this.props.text}
             />

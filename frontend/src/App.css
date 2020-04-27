@@ -369,7 +369,7 @@ h5 {
   top: 0px;
   width: 100%;
   background-image: linear-gradient(#7acdfd, var(--theme-color));
-  border-bottom: rgb(163, 156, 156);;
+  border-bottom: 1px solid rgb(163, 156, 156);
 }
 
 .Login-btn {
@@ -777,4 +777,5 @@ nav ul {
 /* ----------------- */
 
 /* ----------------------------------------------------- */
+
 

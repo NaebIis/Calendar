@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { applyMiddleware, compose, createStore } from "redux";
 import thunk from "redux-thunk";
 import { createLogger } from "redux-logger";
@@ -19,10 +20,12 @@ const makeStore = () => {
 
 export const store = makeStore();
 
-store.dispatch({
-  type: "EVENTS",
-  payload: fetch(`${URL}/events`).then(resp => resp.json())
-});
+const getEvents = () => {
+  store.dispatch({
+    type: "EVENTS",
+    payload: fetch(`${URL}/events`).then(resp => resp.json())
+  });
+}
 
 export const getClickedDayNotes = () => {
   store.dispatch({
@@ -70,6 +73,8 @@ getPartyEvents();
 getInventoryItems();
 getPartyEventJoins();
 getClickedDayNotes();
+getEvents()
+
 
 // store.dispatch(dispatch => {
 //   dispatch({ type: "FETCHING_EVENTS" })
